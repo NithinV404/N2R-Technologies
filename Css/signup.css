@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Padauk:wght@700&family=Raleway:wght@700&display=swap');
+*
+{
+    margin:0;
+    padding:0;
+    font-family: 'Raleway',sans-serif;
+}
+body
+{
+    background-image: url(../Assets/christian-wiediger-c3ZWXOv1Ndc-unsplash.jpg);
+    display: block;
+    background-size:cover; 
+}
+.main
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.card
+{
+    background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+    height: 550px;
+    width: 373px;
+    padding-left: 20px;
+    border-radius: 15px;
+    box-shadow: 2rem white;
+    position: relative;
+}
+i
+{
+    position: relative;
+    top: -15px;
+    right: 256px;
+    margin: 3rem 24rem;
+    font-size: 5rem;
+    color: #B993D6 ;
+}
+#reg-txt
+{
+    margin: 30px 0px 10px;
+    font-size: 15px;
+    color: white;
+    position: relative;
+    bottom: 71px;
+    right: -96px;
+}
+input
+{
+    height: 30px;
+    width: 10rem;
+    border-radius: none;
+    outline-style: none;
+    border:none;
+    border-bottom: 2px solid #B2BAED;
+    background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+    color: white;
+}
+input[type="firstname"]
+{
+    margin:10px 0px 10px 0px;
+    position: relative;
+    top: -72px;
+    left: 8px;
+    width: 157px;
+    background-image: linear-gradient(315deg, #485461 0%, #28313b 0%);
+}
+input[type="lastname"]
+{
+    margin:10px 0px 10px 0px;
+    position: relative;
+    top: -72px;
+    left: 20px;
+}
+input[type="text"]
+{
+    margin:10px 0px 10px 0px;
+    height: 30px;
+    width: 338px;
+    position: relative;
+    top: -72px;
+    left: 6px;
+}
+input[type="email"]
+{
+    margin:10px 0px 10px 0px;
+    height: 30px;
+    width: 338px;
+    position: relative;
+    top: -72px;
+    left: 6px;
+}
+input[type="password"]
+{
+    margin:10px 0px 10px 0px;
+    height: 30px;
+    width: 338px;
+    position: relative;
+    top: -72px;
+    left: 6px;
+}
+input[type="password"]
+{
+    margin:10px 0px 10px 0px;
+    height: 30px;
+    width: 338px;
+    position: relative;
+    top: -72px;
+    left: 6px;
+}
+input::placeholder
+{
+    font-weight: 500;
+    color: white;
+}
+input[type="checkbox"]
+{
+    margin:-3px 0px 10px 0px;
+    height: 13px;
+    width: 338px;
+    position: relative;
+    top: -72px;
+    left: -156px;
+ 
+}
+#tandc
+{
+    margin: 20px 0px 10px;
+    font-size: 15px;
+    color: white;
+    position: relative;
+    bottom: 100px;
+    right: -26px;  
+    text-decoration: none;
+}
+#register
+{
+    display:inline-block;
+    color:white;
+    text-decoration: none;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    margin: 1rem 0 1rem;
+    position: relative;
+    top: -95px;
+    right: -126px;
+    border: none;
+}
+#login-a
+{
+    position: relative;
+    bottom: 3px;
+    right: 80px;
+    color:white;
+    text-decoration: none;
+}
+
+.btn
+{
+    background-image: linear-gradient(to right, #B993D6 0%, #8CA6DB  51%, #B993D6  100%);
+    display:inline-block;
+    color:white;
+    text-decoration: none;
+    padding: 10px 55px 10px 55px;
+    border-radius: 5px;
+    margin: 1rem 0 1rem;
+    background-size: 200% auto;
+}
+.btn:hover 
+{
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }

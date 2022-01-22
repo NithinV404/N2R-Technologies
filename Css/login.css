@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Padauk:wght@700&family=Raleway:wght@700&display=swap');
+*
+{
+    margin:0;
+    padding:0;
+    font-family: 'Raleway',sans-serif;
+}
+
+body
+{
+    background-image: url(../Assets/christian-wiediger-c3ZWXOv1Ndc-unsplash.jpg);
+    display: block;
+    background-size: cover;
+}
+.login-holder
+{
+    display: flex;
+    height: 700px;
+    justify-content: center;
+    align-items: center;
+}
+.card
+{
+    background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+    height: 350px;
+    width: 700px;
+    padding-left: 20px;
+    border-radius: 15px;
+    box-shadow: 2rem white;
+}
+input
+{
+    height: 30px;
+    width: 21rem;
+    border-radius: none;
+    outline-style: none;
+    border:none;
+    border-bottom: 2px solid #B2BAED;
+    background-image: linear-gradient(315deg, #485461 0%, #28313b 0%);
+    color: white;
+}
+.btn
+{
+    background-image: linear-gradient(to right, #B993D6 0%, #8CA6DB  51%, #B993D6  100%);
+    display:inline-block;
+    color:white;
+    text-decoration: none;
+    padding: 10px 55px 10px 55px;
+    border-radius: 5px;
+    margin: 1rem 0 1rem;
+    background-size: 200% auto;
+    border: none;
+}
+.btn:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+ 
+input::placeholder
+{
+    font-weight: 500;
+    color: white;
+}
+input:focus
+{
+    color:white;
+}
+input[type="email"]
+{
+    margin:10px 0px 10px 0px;
+}
+input[type="password"]
+{
+    margin-bottom: 10px;
+}
+
+#login-txt
+{
+    margin: 20px 0px 10px;
+    font-size: 3rem;
+    color: white;
+}
+#signup
+{
+    margin-left: 12px;
+}
+#forgot-pass,#skip
+{
+    color: white;
+    font-size: small;
+    display: block;
+    text-decoration: none;
+    position: absolute;
+}
+#login-image
+{
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    margin: 1rem 23rem;
+}
+i
+{
+    color:white;
+    cursor: pointer;
+    margin-left: -30px;
+}
+i:hover
+{
+    font-size: 15px;
+}
+.logo
+{
+    width: 100px;
+    height: 100px;
+    margin: 5px 0px 0px 20px;
+}
+.header
+{
+    display: flex;
+    align-items: center;
+}
+#logo-name
+{
+    margin-left: 10px;
+    background-image: linear-gradient(to right, #B993D6 0%, #8CA6DB  51%, #B993D6  100%);
+    background-color: #B993D6;
+    font-size: 2rem;
+    background-clip:unset;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+}
