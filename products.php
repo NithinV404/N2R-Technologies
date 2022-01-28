@@ -117,9 +117,8 @@
             }
 
             $str = $temp['prd_id'];
-
+            $counter = 0;
             if (isset($_POST[$str])) {
-                $counter = 0;
                 $counter++;
                 if ($counter == 1) {
                     $cart_check = "SELECT * FROM cart WHERE prd_id=$str AND user_id='1'";
@@ -127,12 +126,12 @@
                     if (mysqli_num_rows($ccr) == 0) {
                         $cart = "INSERT INTO cart(prd_id,user_id)VALUES($str,'1')";
                         mysqli_query($link, $cart);
-                        header("location:products.php");
+                        header("Location:products.php");
                     }
-                    if (mysqli_num_rows($ccr) == 1) {
+                    else {
                         $cart_r = "DELETE FROM cart WHERE prd_id=$str AND user_id='1'";
                         mysqli_query($link, $cart_r);
-                        header("location:products.php");
+                        header("Location:products.php");
                     }
                 }
             }
