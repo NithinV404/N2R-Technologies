@@ -19,10 +19,10 @@
         </div>
         <div class="menus">
             <div class="cart" id="cart"><i id="cart-logo" class="fas fa-shopping-bag"></i></div>
-            <div class="account">
+            <div class="account" id="account">
                 <img src="Assets/shop now 2.jpg">
-                <div class="account-content">
-                    <div class="account-card"><img src="Assets/shop now 2.jpg">
+                <div class="account-content" id="account-content">
+                    <div class="account-card" id="account-card"><img src="Assets/shop now 2.jpg">
                         <h2>Username</h2>
                         <h3>user@gmail.com</h3>
                     </div>
