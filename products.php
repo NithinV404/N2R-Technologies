@@ -18,7 +18,10 @@
             <h2>N2R Solutions</h2>
         </div>
         <div class="menus">
-            <div class="cart" id="cart"><i id="cart-logo" class="fas fa-shopping-bag"></i></div>
+            <div class="cart icon" id="cart"><i id="cart-logo" class="fas fa-shopping-bag"></i></div>
+            <form method="post" action="#">
+            <div class="home icon"><i id="home" class="fas fa-home"></i></div>
+            </form>
             <div class="account" id="account">
                 <img src="Assets/shop now 2.jpg">
                 <div class="account-content" id="account-content">
@@ -38,6 +41,9 @@
             $prd_sql = "SELECT prd_id FROM cart WHERE user_id = '1'";
             $prd_res = mysqli_query($link, $prd_sql);
             $total = 0;
+
+            //Calculating the total price of items present in cart 
+
             while ($temp1 = mysqli_fetch_assoc($prd_res)) {
                 $str1 = $temp1['prd_id'];
 
@@ -52,6 +58,8 @@
             }
             $sql =  "SELECT * FROM product_details ";
             $result = mysqli_query($link, $sql);
+
+            //Cart items displayed from database 
 
             while ($temp = mysqli_fetch_assoc($result)) {
                 $cart_check = "SELECT * FROM cart WHERE prd_id=$temp[prd_id] AND user_id='1'";
@@ -69,9 +77,14 @@
         </div>";
                 }
             }
+            //Displaying the total price 
+
             echo "<h3 id='cart-total'>Total = $total</h3>";
             ?>
-            <button class="btn">Checkout -></button>
+            
+            <!-- Disabling the button when the total price = 0 -->
+
+            <button id="checkout-btn" class="btn" <?php if ($total == '0'){ ?> disabled <?php } ?>>Checkout -></button>
         </div>
     </div>
     <div class="border-holder">
@@ -92,6 +105,32 @@
         while ($temp = mysqli_fetch_assoc($result)) {
             $cart_check = "SELECT * FROM cart WHERE prd_id=$temp[prd_id] AND user_id='1'";
             $ccr = mysqli_query($link, $cart_check);
+
+        //Counter to check how many time the button is being pressed 
+
+        $str = $temp['prd_id'];
+        $counter = 0;
+        if (isset($_POST[$str])) {
+            $counter++;
+            if ($counter == 1) {
+                $cart_check = "SELECT * FROM cart WHERE prd_id=$str AND user_id='1'";
+                $ccr = mysqli_query($link, $cart_check);
+                if (mysqli_num_rows($ccr) == 0) {
+                    $cart = "INSERT INTO cart(prd_id,user_id)VALUES($str,'1')";
+                    mysqli_query($link, $cart);
+                    
+                }
+                else {
+                    $cart_r = "DELETE FROM cart WHERE prd_id=$str AND user_id='1'";
+                    mysqli_query($link, $cart_r);
+                    
+                }
+            }
+            header("Refresh:0");
+        }
+
+        //Displaying the status of items in buttons wheather its is present in the cart 
+
             if (mysqli_num_rows($ccr) == 1) {
                 echo "<div class='item-card'>
      <img src='{$temp['prd_photo']}'/>
@@ -99,7 +138,7 @@
     <p>{$temp["prd_desc"]}</p>
     <h1>{$temp["prd_price"]}$</h1> 
     <form method='post' action='#'>
-    <button name='{$temp["prd_id"]}' value='submit'>Added &#x2713</button>
+    <button name='{$temp["prd_id"]}' value='submit'>Added<i class='fas fa-check-circle'></i></button>
     </form>
     </article>
    </div>";
@@ -110,33 +149,13 @@
     <p>{$temp["prd_desc"]}</p>
     <h1>{$temp["prd_price"]}$</h1> 
     <form method='post' action='#'>
-    <button name='{$temp["prd_id"]}' value='submit'>Add to Cart</button>
+    <button name='{$temp["prd_id"]}' value='submit'>Add to Cart<i class='fas fa-shopping-bag'></i></button>
     </form>
     </article>
    </div>";
             }
 
-            $str = $temp['prd_id'];
-            $counter = 0;
-            if (isset($_POST[$str])) {
-                $counter++;
-                if ($counter == 1) {
-                    $cart_check = "SELECT * FROM cart WHERE prd_id=$str AND user_id='1'";
-                    $ccr = mysqli_query($link, $cart_check);
-                    if (mysqli_num_rows($ccr) == 0) {
-                        $cart = "INSERT INTO cart(prd_id,user_id)VALUES($str,'1')";
-                        mysqli_query($link, $cart);
-                        header("Location:products.php");
-                    }
-                    else {
-                        $cart_r = "DELETE FROM cart WHERE prd_id=$str AND user_id='1'";
-                        mysqli_query($link, $cart_r);
-                        header("Location:products.php");
-                    }
-                }
-            }
         }
-
         ?>
     </div>
     <script src="./Js/products.js"></script>
