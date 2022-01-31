@@ -2,6 +2,8 @@ const cart = document.getElementById('cart-logo');
 const cart_card = document.getElementById('cart-card');
 const account = document.getElementById('account')
 const account_card = document.getElementById('account-content'); 
+const home = document.getElementById('home');
+
 var counter = 0;
 var counter1 = 0;
 cart.addEventListener('click',()=>{
@@ -28,4 +30,7 @@ account.addEventListener('click',()=>{
         account_card.style = "display:none;"
         counter1 = 0;
     }
+})
+home.addEventListener('click',()=>{
+   location.href="home.php";
 })
