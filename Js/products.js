@@ -3,6 +3,7 @@ const cart_card = document.getElementById('cart-card');
 const account = document.getElementById('account')
 const account_card = document.getElementById('account-content'); 
 const home = document.getElementById('home');
+
 const checkout = document.getElementById('checkout-btn');
 
 var counter = 0;
@@ -37,4 +38,5 @@ home.addEventListener('click',()=>{
 })
 checkout.addEventListener('click',()=>{
     location.href="checkout.php";
+
 })

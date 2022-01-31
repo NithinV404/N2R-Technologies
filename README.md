@@ -6,7 +6,7 @@ This website allows users to purchase computer accessories and parts
 Instructions to run the website on your local machine 
 
 Install XAMPP
-<a href="https://www.apachefriends.org/index.html">Click here
+<a href="https://www.apachefriends.org/index.html">Click here</a>
 
 *Download the project zip 
 
@@ -36,4 +36,4 @@ Now the project opens successfully in your preffered browser
 The project is under development ⚠️
 There may be some bugs 🪲
 
-As long as you do not claim this project as yours its fine 
+As long as you do not claim this project as yours its fine to use our work

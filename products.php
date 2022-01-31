@@ -84,7 +84,9 @@
             
             <!-- Disabling the button when the total price = 0 -->
 
+
             <button id="checkout-btn" class="btn" <?php if ($total == '0'){ ?> disabled <?php } ?>>Checkout -></button>
+
         </div>
     </div>
     <div class="border-holder">
@@ -130,7 +132,7 @@
         }
 
         //Displaying the status of items in buttons wheather its is present in the cart 
-
+        
             if (mysqli_num_rows($ccr) == 1) {
                 echo "<div class='item-card'>
      <img src='{$temp['prd_photo']}'/>

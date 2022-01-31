@@ -4,7 +4,10 @@
 
 <head>
   <meta charset="UTF-8">
+
   <link rel="icon" href="Assets/logo.png">
+
+
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Checkout</title>
@@ -15,15 +18,18 @@
     <div class="container">
         <div class="navbar">
             <div class="logo">
+
                 <a href="home.php"> <img src="./Assets/logo.png" alt="n2r logo" width="100px" height="100px"></a>
                 <h2>N2R Solutions</h2>
             </div>
+
         </div>
 <div class="details">
   <div class="container">
     <div class="row">
       <div>
         <h1>Complete your order!</h1>
+
         <div>
           <h1><b>Product(s) : </b></h1>
           <table>
@@ -72,12 +78,14 @@
             <input type="tel" name="phone" class="form-control" placeholder="Enter Phone" required>
           </div>
           <div class="form-group">
+
             <textarea name="address" class="form-control"  rows="3" cols="96"  placeholder="Enter Delivery Address Here..." required></textarea>
           </div>
           <h3 id="mode" >Select Payment Mode:</h3>
           <div class="form-group">
             <select name="pmode" class="form-control">
               <option value="" selected disabled required>-Select Payment Mode-</option>
+
               <option value="cod">Cash On Delivery</option>
               <option value="netbanking">Net Banking</option>
               <option value="cards">Debit/Credit Card</option>
@@ -90,7 +98,9 @@
       </div>
     </div>
   </div>
+
   </div>
+
 </body>
 
 </html>
