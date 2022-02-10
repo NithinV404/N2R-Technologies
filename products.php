@@ -9,6 +9,10 @@
     <link rel="icon" href="Assets/logo.png">
     <link rel="stylesheet" href="Css/products.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -20,7 +24,8 @@
         <div class="menus">
             <div class="cart icon" id="cart"><i id="cart-logo" class="fas fa-shopping-bag"></i></div>
             <form method="post" action="#">
-            <div class="home icon"><i id="home" class="fas fa-home"></i></div>
+                <div class="home icon"><i id="home" class="fas fa-home"></i></div>
+                <h2 id="test"></h2>
             </form>
             <div class="account" id="account">
                 <img src="Assets/shop now 2.jpg">
@@ -56,36 +61,18 @@
 
                 $total = $total + $str2;
             }
-            $sql =  "SELECT * FROM product_details ";
-            $result = mysqli_query($link, $sql);
-
-            //Cart items displayed from database 
-
-            while ($temp = mysqli_fetch_assoc($result)) {
-                $cart_check = "SELECT * FROM cart WHERE prd_id=$temp[prd_id] AND user_id='1'";
-                $ccr = mysqli_query($link, $cart_check);
-                if (mysqli_num_rows($ccr) == 1) {
-                    echo "<div class='item-card'>
-         <img src='{$temp['prd_photo']}'/>
-         <article><h2>{$temp["prd_name"]}</h2>
-        <p>{$temp["prd_desc"]}</p>
-        <h1>{$temp["prd_price"]}$</h1> 
-        <form method='post' action='#'>
-        <button name='{$temp["prd_id"]}' value='submit'>Remove</button>
-        </form>
-        </article>
-        </div>";
-                }
-            }
+            ?>
+                    <div class='item-card-holder' id="cart_card_det">
+                    </div>
+            <?php
             //Displaying the total price 
-
             echo "<h3 id='cart-total'>Total = $total</h3>";
             ?>
-            
+
             <!-- Disabling the button when the total price = 0 -->
 
 
-            <button id="checkout-btn" class="btn" <?php if ($total == '0'){ ?> disabled <?php } ?>>Checkout -></button>
+            <button id="checkout-btn" class="btn" <?php if ($total == '0') { ?> disabled <?php } ?>>Checkout -></button>
 
         </div>
     </div>
@@ -105,62 +92,69 @@
         $result = mysqli_query($link, $sql);
 
         while ($temp = mysqli_fetch_assoc($result)) {
-            $cart_check = "SELECT * FROM cart WHERE prd_id=$temp[prd_id] AND user_id='1'";
-            $ccr = mysqli_query($link, $cart_check);
-
-        //Counter to check how many time the button is being pressed 
-
-        $str = $temp['prd_id'];
-        $counter = 0;
-        if (isset($_POST[$str])) {
-            $counter++;
-            if ($counter == 1) {
-                $cart_check = "SELECT * FROM cart WHERE prd_id=$str AND user_id='1'";
+           
+            $str = $temp['prd_id'];
+            if(isset($_POST[$str]))
+            {
+                $cart_check = "SELECT * FROM cart WHERE prd_id=$temp[prd_id] AND user_id='1'";
                 $ccr = mysqli_query($link, $cart_check);
-                if (mysqli_num_rows($ccr) == 0) {
-                    $cart = "INSERT INTO cart(prd_id,user_id)VALUES($str,'1')";
-                    mysqli_query($link, $cart);
-                    
+                if(mysqli_num_rows($ccr)==1)
+                {
+                    mysqli_query($link,"DELETE FROM cart WHERE prd_id=$str AND user_id=1");
                 }
-                else {
-                    $cart_r = "DELETE FROM cart WHERE prd_id=$str AND user_id='1'";
-                    mysqli_query($link, $cart_r);
-                    
+                else
+                {
+                    mysqli_query($link,"INSERT INTO cart(prd_id,user_id)VALUES($str,'1')");
                 }
             }
-            header("Refresh:0");
-        }
-
-        //Displaying the status of items in buttons wheather its is present in the cart 
-        
-            if (mysqli_num_rows($ccr) == 1) {
-                echo "<div class='item-card'>
-     <img src='{$temp['prd_photo']}'/>
-     <article><h2>{$temp["prd_name"]}</h2>
-    <p>{$temp["prd_desc"]}</p>
-    <h1>{$temp["prd_price"]}$</h1> 
-    <form method='post' action='#'>
-    <button name='{$temp["prd_id"]}' value='submit'>Added<i class='fas fa-check-circle'></i></button>
-    </form>
-    </article>
-   </div>";
-            } else {
-                echo "<div class='item-card'>
-     <img src='{$temp['prd_photo']}'/>
-     <article><h2>{$temp["prd_name"]}</h2>
-    <p>{$temp["prd_desc"]}</p>
-    <h1>{$temp["prd_price"]}$</h1> 
-    <form method='post' action='#'>
-    <button name='{$temp["prd_id"]}' value='submit'>Add to Cart<i class='fas fa-shopping-bag'></i></button>
-    </form>
-    </article>
-   </div>";
-            }
-
+            //Displaying the status of items in buttons wheather its is present in the cart 
+            ?>
+                      <div class='item-card'>
+                      <img src='<?php echo $temp['prd_photo'] ?>'/>
+                      <article><h2><?php echo $temp["prd_name"] ?></h2>
+                      <p><?php echo $temp["prd_desc"] ?></p>
+                      <h1><?php echo $temp["prd_price"] ?>$</h1> 
+                      <form method='post' action='#'>
+                      <button class="btn" id='<?php echo $temp["prd_id"] ?>' name='<?php echo $temp["prd_id"] ?>' value='submit'></button>
+                      </form>
+                      </article>
+                      </div>
+            <?php
+            if(isset($_POST[$str]))
+            header('Location:products.php');
         }
         ?>
     </div>
     <script src="./Js/products.js"></script>
+    <script>
+        $(document).ready(function(){
+        btn();
+    })
+    $('btn').click(function(){
+        btn();
+    });
+    function btn()
+    {
+        $.ajax({  
+         type:"POST", 
+         url:"products_details.php",
+         success:function(data){
+           var dc = data.split(',');
+           var i=0;
+         $.each(dc,e=>{
+            $(`#${dc[e]}`).text(dc[e+1]);
+         })
+            }
+        })
+        $.ajax({  
+         type:"POST", 
+         url:"cart_details.php",
+         success:function(data1){
+             $('#cart_card_det').html(data1);
+         }
+        })
+    }
+    
+    </script>
 </body>
-
 </html>

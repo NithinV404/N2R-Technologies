@@ -1,15 +1,15 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-
   <link rel="icon" href="Assets/logo.png">
-
-
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
   <title>Checkout</title>
 <link rel="stylesheet" href="css/checkout.css">
 </head>
@@ -65,25 +65,24 @@
           <h1><b>Delivery Charge : </b>Free</h1>
           <h1><b>Total Amount Payable : <?php echo $total; ?>/-</h1>
         </div>
+        <div class="address-div" id="add-div">
+        <div class='saved-add' id='add-card'>
+          <?php 
+           $sql = mysqli_query($link,"SELECT * FROM details WHERE id=1");
+           while($temp = mysqli_fetch_assoc($sql))
+           {
+             $result = $temp;
+           }
+  
+          ?>
+        </div>
+          </div>
         <form action="" method="post" id="placeOrder">
           <input type="hidden" name="products" value="">
           <input type="hidden" name="grand_total" value="">
-          <div class="form-group">
-            <input type="text" name="name" class="form-control" placeholder="Enter Name" required>
-          </div>
-          <div class="form-group">
-            <input type="email" name="email" class="form-control" placeholder="Enter E-Mail" required>
-          </div>
-          <div class="form-group">
-            <input type="tel" name="phone" class="form-control" placeholder="Enter Phone" required>
-          </div>
-          <div class="form-group">
-
-            <textarea name="address" class="form-control"  rows="3" cols="96"  placeholder="Enter Delivery Address Here..." required></textarea>
-          </div>
           <h3 id="mode" >Select Payment Mode:</h3>
           <div class="form-group">
-            <select name="pmode" class="form-control">
+            <select name="pmode" class="form-control" required>
               <option value="" selected disabled required>-Select Payment Mode-</option>
 
               <option value="cod">Cash On Delivery</option>
@@ -92,15 +91,48 @@
             </select>
           </div>
           <div class="form-group">
-            <input type="submit" name="submit" value="Place Order" class="btn">
+            <form method="post">
+            <input type="submit" name="submit" id="submit" value="Place Order" class="btn" disabled>
+            <?php 
+                     if(isset($_POST['submit']))
+                     {
+                       header('Location:bill.php');
+                     }
+            ?>
+            </form>
           </div>
         </form>
       </div>
     </div>
   </div>
-
   </div>
+<script src="js/checkout.js"></script>
+<script>
+  $(document).ready(function(){  
+         $.ajax({  
+         type:"POST",  
+         url:"checkout_details.php",  
+         success: function(data){  
+            $('#add-card').html(data);
+         }  
+        });
+      })
+    let c1 = 0;
 
+    $('#add-card').click(function(){
+    c1 += 1;
+    if(c1==1)
+    {
+    $('#add-card').css({'border':'solid 4px purple'});
+    $('#submit').removeAttr('disabled');
+    }
+    if(c1==2)
+    {
+    $('#add-card').css({'border':'none'});
+    $('#submit').attr('disabled');
+    c1 = 0;
+    }
+  })
+</script>
 </body>
-
 </html>
