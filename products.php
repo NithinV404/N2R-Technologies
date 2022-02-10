@@ -92,7 +92,9 @@
                       <p><?php echo $temp["prd_desc"] ?></p>
                       <h1><?php echo $temp["prd_price"] ?>$</h1> 
                       <form method='post' action='#'>
+
                       <button class="card-btn" id='<?php echo $temp["prd_id"] ?>' name='<?php echo $temp["prd_id"] ?>' value='submit'></button>
+
                       </form>
                       </article>
                       </div>
@@ -105,6 +107,7 @@
         $(document).ready(function(){
         btn();
     })
+
     $('.card-btn').click(function(){
         window.location.href = "products.php";
         btn();
@@ -112,6 +115,7 @@
     $('.btn').click(function(){
         window.location.href = "checkout.php";
     });
+
     function btn()
     {
         $.ajax({  
@@ -132,6 +136,7 @@
              $('#cart_card_det').html(data1);
          }
         })
+
         $.ajax({  
          type:"POST", 
          url:"cart_total.php",
@@ -143,6 +148,7 @@
              $('#checkout-btn').removeAttr('disabled')
          }
         })
+
     }
     
     </script>
