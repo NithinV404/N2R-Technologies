@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2022 at 08:49 AM
+-- Generation Time: Feb 11, 2022 at 07:02 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -37,11 +37,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`prd_id`, `user_id`) VALUES
-(6, 1),
-(5, 1),
-(4, 1),
-(2, 1),
-(3, 1);
+(2, 21),
+(3, 21);
 
 -- --------------------------------------------------------
 
@@ -64,10 +61,10 @@ CREATE TABLE `details` (
 --
 
 INSERT INTO `details` (`id`, `first_name`, `last_name`, `ph_num`, `pass`, `email`, `address`) VALUES
-(1, 'temp', '1', '9373183839', '1234', 'temp1@gmail.com', 'Gandhi bazar 2nd road'),
-(19, 'Nithin', 'V', '9482916983', 'nithin', 'nithin.v053@gmail.com', NULL),
-(20, 'Rakshath', 'J', '9632024472', 'rakshath', 'rakshath@gmail.com', NULL),
-(21, 'Rahid', 'Khan', '9632024472', 'rahid', 'rahidkhan@gmail.com', NULL),
+(1, 'temp', '1', '9373183839', '1234', 'temp1@gmail.com', 'Of course its temporary :D\r\n'),
+(19, 'Nithin', 'V', '9482916983', 'nithin', 'nithin.v053@gmail.com', 'Lord of darkness :D'),
+(20, 'Rakshath', 'J', '9632024472', 'rakshath', 'rakshath@gmail.com', 'Lives somewhere on the brim i dont know where '),
+(21, 'Rahid', 'Khan', '9632024472', 'rahid', 'rahidkhan@gmail.com', 'I hope he is not lost somewhere :)\r\n'),
 (22, 'Some', 'One', '9999129821', 'someone', 'someone@gmail.com', 'Lives somewhere in the world');
 
 -- --------------------------------------------------------
