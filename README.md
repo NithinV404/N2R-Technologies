@@ -1,35 +1,35 @@
 # N2R-Technologies
 ====================================
-##Ecommerce Website 
-###This website allows users to purchase computer accessories and parts 
+## Ecommerce Website 
+### This website allows users to purchase computer accessories and parts 
 
 Instructions to run the website on your local machine 
 
 Install XAMPP
 <a href="https://www.apachefriends.org/index.html">Click here</a>
 
-*Download the project zip 
+## Download the project zip 
 
--Locate the install location of XAMPP
+- Locate the install location of XAMPP
  By default C:\xampp\htdocs
 
--Browse into htdocs folder 
+- Browse into htdocs folder 
 
--Delete all the files in the folder 
+- Delete all the files in the folder 
 
--Copy the files from zip and place it inside that folder
+- Copy the files from zip and place it inside that folder
 
--Launch XAMPP and start Apache and Myphp server 
+- Launch XAMPP and start Apache and Myphp server 
 
--Click on admin button next to Myphp server 
+- Click on admin button next to Myphp server 
 
--Now create a database with name:
+- Now create a database with name:
 ```
 customer_table
 ```
--Now import the sql file from the project zip inside folder Mysql 
+- Now import the sql file from the project zip inside folder Mysql 
 
--Now go back to XAMPP and now press admin button next to Apache server
+- Now go back to XAMPP and now press admin button next to Apache server
 
 Now the project opens successfully in your preffered browser 
 
