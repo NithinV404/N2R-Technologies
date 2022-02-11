@@ -38,9 +38,10 @@ while ($temp = mysqli_fetch_assoc($result)) {
     <link rel="icon" href="Assets/logo.png">
     <link rel="stylesheet" href="Css/products.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-</head>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+</head>
 <body>
     <header>
         <div class="logo">
@@ -109,11 +110,13 @@ while ($temp = mysqli_fetch_assoc($result)) {
     <div id="cart-card-holder">
         <div id="cart-card">
             <h2 class="cart-header">Cart</h2>
+
             <div class='item-card-holder' id="cart_card_det">
             </div>
             <div class='btm-div'>
                 <h3 id='cart-total'></h3>
                 <button id="checkout-btn" class="btn" disabled>Checkout -></button>
+
             </div>
         </div>
     </div>
@@ -128,8 +131,6 @@ while ($temp = mysqli_fetch_assoc($result)) {
     <h1>300$</h1>
     </article>
      </div> -->
-
-
     </div>
     <script src="./Js/products.js"></script>
     <script>
@@ -192,7 +193,7 @@ while ($temp = mysqli_fetch_assoc($result)) {
                 }
             })
         }
+
     </script>
 </body>
-
 </html>

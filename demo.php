@@ -3,6 +3,7 @@
   $user = $_SESSION['user'];
   include('config.php');
   $cart_result = mysqli_query($link,"SELECT * FROM cart WHERE user_id=$user");
+
   while($hld = mysqli_fetch_assoc($cart_result))
   {
       $item = $hld['prd_id'];

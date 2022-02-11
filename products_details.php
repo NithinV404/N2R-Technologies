@@ -11,6 +11,7 @@
 
                  $str = $temp['prd_id'];
                  $cart_check = "SELECT * FROM cart WHERE prd_id=$str AND user_id=$user";
+
                  $ccr = mysqli_query($link, $cart_check);
                  if (mysqli_num_rows($ccr) == 0) {
                      $value3 = "Add to cart";
