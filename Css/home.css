@@ -112,6 +112,7 @@ i
 {
     color: white;
     font-size: 2rem;
+    cursor: pointer;
 }
 hr {
     height: .25rem;

@@ -6,6 +6,7 @@
         <link rel="icon" href="Assets/logo.png">
         <link rel="stylesheet" href="Css/home.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     </head>
 <body>
 <div class="header">
@@ -21,8 +22,8 @@
                 <li class="faq"><a href="about.php">ABOUT US</a></li>
                 <li class="login"><a href="login.php">LOGIN</a></li>
                 <li class="register"><a href="signup.php">REGISTER</a></li>
-                <i class="fas fa-shopping-bag"></i>
-             <hr/>   
+                <i class="fas fa-shopping-cart"></i>
+                <hr/>   
             </ul>
            </nav>
            
@@ -42,5 +43,9 @@
 </div>
 
 </body>
-
+<script>
+    $('.fa-shopping-cart').click(()=>{
+        window.location.href = 'products.php'
+    })
+</script>
 </html>

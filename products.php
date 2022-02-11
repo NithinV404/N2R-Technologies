@@ -1,3 +1,32 @@
+<?php
+session_start();
+include('config.php');
+$sql =  "SELECT * FROM product_details ";
+$result = mysqli_query($link, $sql);
+$user = $_SESSION['user'];
+while ($temp = mysqli_fetch_assoc($result)) {
+
+    $str = $temp['prd_id'];
+    if (isset($_POST[$str])) {
+        if($_SESSION['logged']==1)
+        {
+        $cart_check = "SELECT * FROM cart WHERE prd_id=$temp[prd_id] AND user_id=$user";
+        $ccr = mysqli_query($link, $cart_check);
+        if (mysqli_num_rows($ccr) == 1) {
+            mysqli_query($link, "DELETE FROM cart WHERE prd_id=$str AND user_id=$user");
+        } else {
+            mysqli_query($link, "INSERT INTO cart(prd_id,user_id)VALUES($str,$user)");
+        }
+    }
+    else
+    {
+        header("Location:Login.php");
+    }
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +38,7 @@
     <link rel="icon" href="Assets/logo.png">
     <link rel="stylesheet" href="Css/products.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -18,16 +48,59 @@
             <h2>N2R Solutions</h2>
         </div>
         <div class="menus">
-            <div class="cart icon" id="cart"><i id="cart-logo" class="fas fa-shopping-bag"></i></div>
+            <div class="cart icon" id="cart"><i id="cart-logo" class="fas fa-shopping-cart"></i></div>
             <form method="post" action="#">
-            <div class="home icon"><i id="home" class="fas fa-home"></i></div>
+                <div class="home icon"><i id="home" class="fas fa-home"></i></div>
+                <h2 id="test"></h2>
             </form>
             <div class="account" id="account">
                 <img src="Assets/shop now 2.jpg">
                 <div class="account-content" id="account-content">
                     <div class="account-card" id="account-card"><img src="Assets/shop now 2.jpg">
-                        <h2>Username</h2>
-                        <h3>user@gmail.com</h3>
+                    <?php 
+                    $username = '';
+                    $email = '';
+                    $logged = 0;
+                    
+                    if($_SESSION['logged']==1)
+                    {
+                            $log_result = mysqli_query($link,"SELECT * FROM details WHERE id=$user");
+                            while($d = mysqli_fetch_assoc($log_result))
+                            {
+                                $username = $d['first_name'];
+                                $email = $d['email'];
+                            }
+                        }
+                    else
+                    {   
+                    ?>
+                      <h2>Not logged in</h2>
+                      <button class='btn' id='log-in'>Log in</button>
+                    <?php 
+                    }
+                    ?>
+                        <!-- <h2><?php echo $user ?></h2> -->
+                        <h2><?php echo $username ?></h2>
+                        <h3><?php echo $email ?></h3>
+                    <?php if($_SESSION['logged']==1)
+                    {
+                    ?>
+                        <form method="post">
+                            <button class="btn" name='log-out'>Log out</button>
+                        </form>
+                    <?php 
+                    }
+                    ?>
+                    <?php 
+                        if(isset($_POST['log-out']))
+                        {
+                        session_destroy();
+                        session_start();
+                        $_SESSION['logged']=0;
+                        $_SESSION['user']=0;
+                        header("Refresh:0");
+                        }
+                    ?>
                     </div>
                 </div>
             </div>
@@ -36,57 +109,12 @@
     <div id="cart-card-holder">
         <div id="cart-card">
             <h2 class="cart-header">Cart</h2>
-            <?php
-            include("config.php");
-            $prd_sql = "SELECT prd_id FROM cart WHERE user_id = '1'";
-            $prd_res = mysqli_query($link, $prd_sql);
-            $total = 0;
-
-            //Calculating the total price of items present in cart 
-
-            while ($temp1 = mysqli_fetch_assoc($prd_res)) {
-                $str1 = $temp1['prd_id'];
-
-                $price_sql = "SELECT prd_price FROM product_details WHERE prd_id = $str1";
-                $price_res = mysqli_query($link, $price_sql);
-
-                while ($temp3 = mysqli_fetch_assoc($price_res)) {
-                    $str2 = (float)$temp3['prd_price'];
-                }
-
-                $total = $total + $str2;
-            }
-            $sql =  "SELECT * FROM product_details ";
-            $result = mysqli_query($link, $sql);
-
-            //Cart items displayed from database 
-
-            while ($temp = mysqli_fetch_assoc($result)) {
-                $cart_check = "SELECT * FROM cart WHERE prd_id=$temp[prd_id] AND user_id='1'";
-                $ccr = mysqli_query($link, $cart_check);
-                if (mysqli_num_rows($ccr) == 1) {
-                    echo "<div class='item-card'>
-         <img src='{$temp['prd_photo']}'/>
-         <article><h2>{$temp["prd_name"]}</h2>
-        <p>{$temp["prd_desc"]}</p>
-        <h1>{$temp["prd_price"]}$</h1> 
-        <form method='post' action='#'>
-        <button name='{$temp["prd_id"]}' value='submit'>Remove</button>
-        </form>
-        </article>
-        </div>";
-                }
-            }
-            //Displaying the total price 
-
-            echo "<h3 id='cart-total'>Total = $total</h3>";
-            ?>
-            
-            <!-- Disabling the button when the total price = 0 -->
-
-
-            <button id="checkout-btn" class="btn" <?php if ($total == '0'){ ?> disabled <?php } ?>>Checkout -></button>
-
+            <div class='item-card-holder' id="cart_card_det">
+            </div>
+            <div class='btm-div'>
+                <h3 id='cart-total'></h3>
+                <button id="checkout-btn" class="btn" disabled>Checkout -></button>
+            </div>
         </div>
     </div>
     <div class="border-holder">
@@ -100,67 +128,71 @@
     <h1>300$</h1>
     </article>
      </div> -->
-        <?php
-        $sql =  "SELECT * FROM product_details ";
-        $result = mysqli_query($link, $sql);
 
-        while ($temp = mysqli_fetch_assoc($result)) {
-            $cart_check = "SELECT * FROM cart WHERE prd_id=$temp[prd_id] AND user_id='1'";
-            $ccr = mysqli_query($link, $cart_check);
 
-        //Counter to check how many time the button is being pressed 
-
-        $str = $temp['prd_id'];
-        $counter = 0;
-        if (isset($_POST[$str])) {
-            $counter++;
-            if ($counter == 1) {
-                $cart_check = "SELECT * FROM cart WHERE prd_id=$str AND user_id='1'";
-                $ccr = mysqli_query($link, $cart_check);
-                if (mysqli_num_rows($ccr) == 0) {
-                    $cart = "INSERT INTO cart(prd_id,user_id)VALUES($str,'1')";
-                    mysqli_query($link, $cart);
-                    
-                }
-                else {
-                    $cart_r = "DELETE FROM cart WHERE prd_id=$str AND user_id='1'";
-                    mysqli_query($link, $cart_r);
-                    
-                }
-            }
-            header("Refresh:0");
-        }
-
-        //Displaying the status of items in buttons wheather its is present in the cart 
-        
-            if (mysqli_num_rows($ccr) == 1) {
-                echo "<div class='item-card'>
-     <img src='{$temp['prd_photo']}'/>
-     <article><h2>{$temp["prd_name"]}</h2>
-    <p>{$temp["prd_desc"]}</p>
-    <h1>{$temp["prd_price"]}$</h1> 
-    <form method='post' action='#'>
-    <button name='{$temp["prd_id"]}' value='submit'>Added<i class='fas fa-check-circle'></i></button>
-    </form>
-    </article>
-   </div>";
-            } else {
-                echo "<div class='item-card'>
-     <img src='{$temp['prd_photo']}'/>
-     <article><h2>{$temp["prd_name"]}</h2>
-    <p>{$temp["prd_desc"]}</p>
-    <h1>{$temp["prd_price"]}$</h1> 
-    <form method='post' action='#'>
-    <button name='{$temp["prd_id"]}' value='submit'>Add to Cart<i class='fas fa-shopping-bag'></i></button>
-    </form>
-    </article>
-   </div>";
-            }
-
-        }
-        ?>
     </div>
     <script src="./Js/products.js"></script>
+    <script>
+        $(document).ready(function() {
+            items();
+            btn();
+        })
+        $('.card-btn').click(function() {
+            items();
+            btn();
+        });
+        $('.logo').click(()=>{
+            window.location.href = 'home.php';
+        })
+        $('#log-in').click(()=>{
+            window.location.href = 'Login.php';
+        })
+       function btn() {
+            $.ajax({
+                type: "POST",
+                url: "products_details.php",
+                success: function(data) {
+                    var dc = data.split(',');
+                    var i = 0;
+                    $.each(dc, e => {
+                        $(`#${dc[e]}`).text(dc[e + 1]);
+                    })
+                }
+            })
+            $.ajax({
+                type: "POST",
+                url: "cart_details.php",
+                success: function(data1) {
+                    if(data1 != '')
+                    $('#cart_card_det').html(data1);
+                    else
+                    $('#cart_card_det').html("<h2 id='no-cart-items'>No Items in Cart</h2>");
+                }
+            })
+            $.ajax({
+                type: "POST",
+                url: "cart_total.php",
+                success: function(data1) {
+                    $('#cart-total').text('Total:' + data1);
+                    if (data1 == '0')
+                        $('#checkout-btn').attr('disabled')
+                    else
+                        $('#checkout-btn').removeAttr('disabled')
+                }
+            })
+
+        }
+
+        function items() {
+            $.ajax({
+                type: "POST",
+                url: "prd_items.php",
+                success: function(data) {
+                    $('.items-holder').html(data)
+                }
+            })
+        }
+    </script>
 </body>
 
 </html>

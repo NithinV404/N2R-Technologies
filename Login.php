@@ -1,4 +1,9 @@
 <?php
+        session_start();
+        $_SESSION['logged']=0;
+        $_SESSION['user']=0;
+
+
           include("config.php");
           if(isset($_POST['login']))
           {
@@ -10,8 +15,13 @@
 
           if(mysqli_num_rows($result)==1)
           {
+              $_SESSION['logged'] = 1;
+              while($d = mysqli_fetch_assoc($result))
+              {
+              $_SESSION['user'] = $d['id'];
+              }
               header("Location:home.php");
-          }
+            }
           else
           {
           echo "<h3 style='text-align:center;

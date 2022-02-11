@@ -49,6 +49,7 @@ header
     display: flex;
     align-items: center;
     margin: 1rem 0 1rem 1rem;
+    cursor: pointer;
 }
 .logo > img
 {
@@ -80,6 +81,7 @@ header
     display: flex;
     justify-content: center;
     align-content: center;
+    border-radius: 10px;
 }
 #cart-card
 {
@@ -89,11 +91,14 @@ header
     flex-shrink: 1;
     background-color: rgb(37, 37, 37);
     color: white;
-    height: fit-content;
+    max-height: 40rem;
     width: fit-content;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     border-radius: 5px;
+    overflow: hidden;
+    overflow-y: scroll;
+    color-scheme: dark;
 }
 
 #cart-card > h2
@@ -125,8 +130,9 @@ header
     display: none;
     position: absolute;
     background-color: rgb(34,34,34);
-    height: 400px;
-    width: 20rem;
+    height: fit-content;
+    min-width: max-content;
+    padding: 20px;
     top:4rem;
     right: 5%;
     box-shadow: 0px 8px 16px 0px rgba(44, 44, 44, 0.2);
@@ -172,16 +178,19 @@ header
   {
       display: flex;
       justify-content:flex-start;
+      flex-direction: column;
       border-radius: 5px;
       margin: 0.5rem;
       background-color:rgb(37, 37, 37);
-      width: 30rem;
+      width: 15rem;
+      height: 25rem;
       color:white;
+      padding: 10px;
   }
   .item-card > img
   {
-      margin:10px;
-      height: 200px;
+      margin:18px;
+      height: 190px;
       width: 200px;
       border-radius: 5px;
       flex-shrink: 0;
@@ -211,6 +220,19 @@ header
   {
       background-position: right center;
   }
+  .item-card  > article > p
+  {
+      text-overflow:ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+  }
+  .item-card  > article > h2
+  {
+      width: 15rem;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+  }
  .btn
  {
     border:none;
@@ -228,4 +250,12 @@ header
  .fa-shopping-bag
  {
     margin: 0 0rem 0rem 0.5rem;
+ }
+ #checkout-btn
+ {
+     margin:10px;
+ }
+ #no-cart-items
+ {
+     padding: 30px;
  }

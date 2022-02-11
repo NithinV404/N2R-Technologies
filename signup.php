@@ -9,6 +9,7 @@
         $email = mysqli_escape_string($link,$_POST['email']);
         $pass = mysqli_escape_string($link,$_POST['password']);
         $cn_pass = mysqli_escape_string($link,$_POST['confirm_password']);
+        $addr = mysqli_escape_string($link,$_POST['address']);
 
         if($pass!=$cn_pass)
         {
@@ -30,8 +31,8 @@
         }
         else
         {
-           $insert = "INSERT INTO details (first_name, last_name, email, pass, ph_num)
-           VALUES ('$fname','$lname','$email','$pass','$number')";
+           $insert = "INSERT INTO details (first_name, last_name, email, pass, ph_num, address)
+           VALUES ('$fname','$lname','$email','$pass','$number','$addr')";
            mysqli_query($link,$insert);
            header('location:login.php');
         }
@@ -62,6 +63,7 @@
         <input name="lastname" type="lastname" placeholder="Last Name*" required>
         <input name="number" type="text" placeholder="Phone number*" maxlength="10" pattern="\d{10}" required>
         <input name="email" type="email" placeholder="E-mail Address*" required>
+        <input name="address" type="address" placeholder="Enter your address*" required>
         <input id= "pass" name="password" type="password" placeholder="Password*" required>
         <input id="con-pass"  name="confirm_password" type="password" placeholder="Confirm Password*" required>
         <input type="checkbox" required>
