@@ -16,7 +16,7 @@ cart.addEventListener('click',()=>{
  }
  if(counter==2)
  {
-     cart_card.style = "display:none;"
+     cart_card.style = "display:none;";
      counter = 0;
  }
 }

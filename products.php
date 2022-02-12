@@ -107,6 +107,10 @@ while ($temp = mysqli_fetch_assoc($result)) {
             </div>
         </div>
     </header>
+    <div class="itemcard-pop-holder" id='popup'>
+        <div class="itemcard-pop">
+            </div>
+    </div>
     <div id="cart-card-holder">
         <div id="cart-card">
             <h2 class="cart-header">Cart</h2>
@@ -121,7 +125,8 @@ while ($temp = mysqli_fetch_assoc($result)) {
         </div>
     </div>
     <div class="border-holder">
-        <div class="border"></div>
+        <div class="border">
+        </div>
     </div>
     <div id="name" class="items-holder">
         <!-- <div class="item-card">
@@ -193,7 +198,24 @@ while ($temp = mysqli_fetch_assoc($result)) {
                 }
             })
         }
-
+        
+        function itemcard(id)
+        {
+          var id=id;
+          $('.itemcard-pop').css({'display':'flex'})
+          $.ajax({
+            type: 'POST',
+            url: 'itemcard-pop.php',
+            data: {id:id},
+            success: function(response) {
+                $('.itemcard-pop').html(response)
+        }
+          })
+        }
+        function closepop()
+        {
+            $('.itemcard-pop').css({'display':'none'})
+        }
     </script>
 </body>
 </html>

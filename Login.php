@@ -60,7 +60,6 @@
         <i class="far fa-eye" id="togglePassword"></i><br>
         <button name="login" id="login" class="btn" >Login</button>
         <button name="signup" id="signup" class="btn" onclick="window.location = 'signup.php';">Signup</button><br>
-        <a href="#" id="forgot-pass">Forgot password</a><br>
         <a href="home.php" id="skip">Skip>>></a><br>
       </form>
     </div>
