@@ -42,7 +42,18 @@ header
     justify-content: center;
     position: relative;
     margin: 0 1rem 0 0;
-
+}
+.account > img
+{
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    transition: ease-out 100ms;
+}
+.account > img:hover
+{
+    height: 60px;
+    width: 60px;
 }
 .logo
 {
@@ -57,12 +68,7 @@ header
     width: 100px;
     margin: 0 5px 0 0 ;
 }
-.account > img
-{
-    border-radius: 100%;
-    height: 50px;
-    width: 50px;
-}
+
 .menus
 {
     display: flex;
@@ -75,6 +81,12 @@ header
     color: white;
     cursor: pointer;
     margin: 0 1rem 0 0rem;
+    transition: ease-out 100ms;
+}
+.icon:hover
+{
+    color:#B993D6;
+    font-size: 1.45rem;
 }
 #cart-card-holder
 {
@@ -119,8 +131,6 @@ header
     background-clip:unset;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    left:3rem;
-    top:2rem;
 }
 .account
 {

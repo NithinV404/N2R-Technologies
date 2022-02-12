@@ -11,11 +11,12 @@ body
 }
 .navbar{
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 20px;
 }
 nav{
-    flex: 1;
+    flex-shrink: 0;
     text-align: right;
 }
 nav ul{
@@ -90,18 +91,26 @@ h1{
     margin-top: 0;
 }
 .product:hover ~ hr {
-    margin-left: 21%;
+    margin-left: 15.5%;
+    width:15%;
   }
   
 .faq:hover ~ hr {
-    margin-left: 42%;
+    margin-left:38%;
+    width:14%
   }
   
 .login:hover ~ hr {
     margin-left: 59%;
+    width: 8%;
   }
 .register:hover ~ hr {
-    margin-left: 80%;
+    margin-left: 75%;
+    width:13%;
+}
+.logo
+{
+    margin-right: 50px;
 }
 .logo > img
 {
@@ -110,13 +119,20 @@ h1{
 }
 i
 {
+    display: block;
     color: white;
     font-size: 2rem;
     cursor: pointer;
+    transition: ease-out 100ms;
+}
+i:hover
+{
+    color:#B993D6;
+    font-size: 1.8rem;
 }
 hr {
     height: .25rem;
-    width:5%;
+    width:8%;
     margin: 0;
     background-image: linear-gradient(to right, #B993D6 0%, #8CA6DB  51%, #B993D6  100%);
     border: none;
@@ -124,10 +140,20 @@ hr {
   }
   .photo
   {
+      position: absolute;
       height: 400px;
       width: 600px;
       object-fit:cover;
       background:url("Assets/shop\ now\ 2.jpg");
       box-shadow: 5px 5px 5px #28313b;
       border-radius: 5px;
+      margin-top: -12rem;
+      transition: ease-out 100ms;
   }
+ .photo:hover
+ {
+    margin-top: -14rem;
+    margin-left: -5rem;
+    height: 500px;
+    width: 700px;
+ }

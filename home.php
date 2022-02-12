@@ -32,7 +32,7 @@
            <div class="col-2">
                <h1>Hardware <br>at your every need!</h1>
                <p>We genuinely believe that PCs should be a pleasure to purchase and own. <br> should help you get your work done, and not be a pain to manage. </p>
-               <a href=""class="btn">SHOP NOW &rarr; </a> 
+               <a id='shop-now' href="products.php" class="btn">SHOP NOW &rarr; </a> 
             </div>
            <div class="col-2">
                <img class="photo" src="Assets/shop now 2.jpg">
@@ -45,7 +45,10 @@
 </body>
 <script>
     $('.fa-shopping-cart').click(()=>{
-        window.location.href = 'products.php'
+        window.location.href = 'products.php';
+    })
+    $('.photo').click(()=>{
+        window.location.href = 'products.php';
     })
 </script>
 </html>
