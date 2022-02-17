@@ -3,6 +3,7 @@ session_start();
 include('config.php');
  $sql =  "SELECT * FROM product_details ";
  $result = mysqli_query($link, $sql);
+ $user = 0;
  $user = $_SESSION['user'];
  //Cart items displayed from database 
 
@@ -14,7 +15,7 @@ include('config.php');
         <article>
             <h2>{$temp["prd_name"]}</h2>
             <p>{$temp['prd_desc']}</p>
-            <h1>{$temp['prd_price']}</h1>
+            <h1>{$temp['prd_price']} &#x20B9</h1>
             <form method='post' action='#'>
                 <button name='{$temp["prd_id"]}' value='submit'>Remove</button>
             </form>

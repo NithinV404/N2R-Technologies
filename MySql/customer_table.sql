@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2022 at 07:02 AM
+-- Generation Time: Feb 17, 2022 at 05:54 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -37,7 +37,6 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`prd_id`, `user_id`) VALUES
-(2, 21),
 (3, 21);
 
 -- --------------------------------------------------------
@@ -66,6 +65,31 @@ INSERT INTO `details` (`id`, `first_name`, `last_name`, `ph_num`, `pass`, `email
 (20, 'Rakshath', 'J', '9632024472', 'rakshath', 'rakshath@gmail.com', 'Lives somewhere on the brim i dont know where '),
 (21, 'Rahid', 'Khan', '9632024472', 'rahid', 'rahidkhan@gmail.com', 'I hope he is not lost somewhere :)\r\n'),
 (22, 'Some', 'One', '9999129821', 'someone', 'someone@gmail.com', 'Lives somewhere in the world');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_history`
+--
+
+CREATE TABLE `order_history` (
+  `prd_id` int(50) NOT NULL,
+  `user_id` int(50) NOT NULL,
+  `price` int(50) NOT NULL,
+  `date_time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_history`
+--
+
+INSERT INTO `order_history` (`prd_id`, `user_id`, `price`, `date_time`) VALUES
+(2, 21, 70, '2022-02-17 09:59:34'),
+(3, 21, 20, '2022-02-17 09:59:34'),
+(1, 21, 80, '2022-02-17 10:02:07'),
+(2, 21, 70, '2022-02-17 10:02:07'),
+(3, 21, 20, '2022-02-17 10:02:07'),
+(4, 21, 700, '2022-02-17 10:02:07');
 
 -- --------------------------------------------------------
 

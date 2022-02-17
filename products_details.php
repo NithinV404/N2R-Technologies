@@ -4,6 +4,7 @@
      $sql =  "SELECT * FROM product_details ";
      $result = mysqli_query($link, $sql);
      $value3 = '';
+     $user = 0;
      $user = $_SESSION['user'];
      while ($temp = mysqli_fetch_assoc($result)) {
          $cart_check = "SELECT * FROM cart WHERE prd_id=$temp[prd_id] AND user_id=$user";

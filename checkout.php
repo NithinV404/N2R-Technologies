@@ -41,6 +41,7 @@
          <?php 
         include("config.php");
         session_start();
+        $user = 0;
         $user = $_SESSION['user'];
         $Items = mysqli_query($link,"SELECT prd_id FROM cart WHERE user_id=$user");
         $total = 0;
@@ -56,7 +57,7 @@
             echo "<tr>";
             echo "<td>" . $temp['prd_id'] . "</td>";
             echo "<td>" . $temp2['prd_name'] . "</td>";
-            echo "<td>" . $temp2['prd_price'] . "</td>";
+            echo "<td>" . $temp2['prd_price'] . " &#x20B9</td>";
             echo "</tr>";
            }
            $total = $total + $str2;
@@ -65,7 +66,7 @@
         </table>
         <br>
           <h1><b>Delivery Charge : </b>Free</h1>
-          <h1><b>Total Amount Payable : <?php echo $total; ?>/-</h1>
+          <h1><b>Total Amount Payable : <?php echo $total; ?> &#x20B9/-</h1>
         </div>
         <div class="address-div" id="add-div">
         <div class='saved-add' id='add-card'>
@@ -98,7 +99,19 @@
             <?php 
                      if(isset($_POST['submit']))
                      {
-                       header('Location:bill.php');
+                       $result = mysqli_query($link,"SELECT * FROM cart");
+                       while($hld = mysqli_fetch_assoc($result))
+                       {
+                          $hldprice = $hld["prd_id"];
+                          $result1 = mysqli_query($link,"SELECT prd_price FROM product_details WHERE prd_id = $hldprice");
+                          while($hld1 = mysqli_fetch_assoc($result1))
+                          {
+                            $prd_id = $hld["prd_id"];
+                            $price = $hld1["prd_price"]; 
+                            mysqli_query($link,"INSERT INTO order_history (prd_id,user_id,price,date_time)VALUES($prd_id,$user,$price,now())");
+                          }
+                       }
+                      header("Location:bill.php");
                      }
             ?>
             </form>

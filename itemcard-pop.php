@@ -2,6 +2,7 @@
     session_start();
     include('config.php');
     $id = $_POST['id'];
+    $user = 0;
     $user = $_SESSION['user'];
     $sql =  "SELECT * FROM product_details WHERE prd_id=$id ";
     $result = mysqli_query($link, $sql);

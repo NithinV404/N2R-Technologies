@@ -3,6 +3,7 @@ session_start();
 include('config.php');
 $sql =  "SELECT * FROM product_details ";
 $result = mysqli_query($link, $sql);
+$user = 0;
 $user = $_SESSION['user'];
 while ($temp = mysqli_fetch_assoc($result)) {
 

@@ -1,6 +1,7 @@
 <?php
     include('config.php');
     session_start();
+    $user = 0;
     $user = $_SESSION['user'];
     $sql = mysqli_query($link,"SELECT * FROM details WHERE id=$user");
     while($result = mysqli_fetch_assoc($sql))

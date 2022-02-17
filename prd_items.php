@@ -11,7 +11,7 @@
             <img src='{$temp['prd_photo']}'/>
             <article><h2>{$temp["prd_name"]}</h2>
             <p>{$temp["prd_desc"]}</p>
-            <h1>{$temp["prd_price"]}$</h1> 
+            <h1>{$temp["prd_price"]} &#x20B9</h1> 
             <form method='post' action='#'>
             <button class='card-btn' id='{$temp["prd_id"]}' name='{$temp["prd_id"]}' value='submit'></button>
             </form>

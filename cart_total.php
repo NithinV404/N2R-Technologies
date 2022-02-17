@@ -1,6 +1,7 @@
 <?php
             session_start();
             include("config.php");
+            $user_id = 0;
             $user_id = $_SESSION['user'];
             $prd_sql = "SELECT prd_id FROM cart WHERE user_id = $user_id";
             $prd_res = mysqli_query($link, $prd_sql);

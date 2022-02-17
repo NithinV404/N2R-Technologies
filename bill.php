@@ -29,7 +29,7 @@
                 <table class="styled-table">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>Product id</th>
                             <th>Product Name</th>
                             <th>Product price</th>
                             <th>Total</th>
@@ -61,7 +61,7 @@
                $(document).ready(function(){  
          $.ajax({  
          type:"POST",  
-         url:"demo.php",  
+         url:"bill_prd_details.php",  
          success: function(data){  
             $('#tbody').html(data);
          }  
