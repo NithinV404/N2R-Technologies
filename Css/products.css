@@ -20,6 +20,10 @@ header
     justify-content: space-between;
     border-radius: 0 3px 3px 0;
 }
+button
+{
+    color: black;
+}
 .border-holder
 {
     display: flex;
@@ -106,6 +110,7 @@ header
     max-width: 90vw;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    border:#B993D6 3px solid;
     border-radius: 5px;
     overflow: hidden;
     overflow-y: scroll;
@@ -288,10 +293,11 @@ header
     max-height: 50rem;
     height: fit-content;
     width: 25rem;
-    top:15vh;
+    top:20vh;
     border-radius: 5px;
     color: white;
     padding: 20px;
+    border:#B993D6 3px solid;
 }
 .itemcard-pop > img
 {

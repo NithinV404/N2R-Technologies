@@ -4,6 +4,7 @@ include('config.php');
  $sql =  "SELECT * FROM product_details ";
  $result = mysqli_query($link, $sql);
  $user = 0;
+ if(isset($_SESSION['user']))
  $user = $_SESSION['user'];
  //Cart items displayed from database 
 

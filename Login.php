@@ -54,7 +54,7 @@
             <image id="login-image" src="Assets/Artboard 1.png">
             <h1 id="login-txt">LOGIN</h1>
         <form name="login_card" action="#" method="POST">
-        <input type="email" name="username" id="username" placeholder="Enter your email address" required>
+        <input type="email" name="username" id="username" placeholder="Enter your email address"   size="30" required>
         <i class="far fa-envelope"></i><br>
         <input type="password" name="password" id="password" placeholder="Password" required>
         <i class="far fa-eye" id="togglePassword"></i><br>
