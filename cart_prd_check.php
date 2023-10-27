@@ -1,5 +1,5 @@
 <?php 
-include('config.php');
+include_once('./includes/config.php');
 
 $sql =  "SELECT * FROM product_details ";
         $result = mysqli_query($link, $sql);

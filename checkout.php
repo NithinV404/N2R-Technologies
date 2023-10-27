@@ -39,7 +39,7 @@
         <th>Product Price</th>
         </tr>
          <?php 
-        include("config.php");
+        include_once("config.php");
         session_start();
         $user = 0;
         $user = $_SESSION['user'];

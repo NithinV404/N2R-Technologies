@@ -1,5 +1,5 @@
 <?php
-    include ("config.php");
+    include_once("./includes/config.php");
 
     if(isset($_POST['submit']))
     {

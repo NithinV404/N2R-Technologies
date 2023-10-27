@@ -2,7 +2,7 @@
      session_start();
      $user = 0;
      $user = $_SESSION['user'];
-      include('config.php');
+      include_once('./includes/config.php');
       $result = mysqli_query($link,"SELECT * FROM details WHERE id=$user");
       while($hl = mysqli_fetch_assoc($result))
       {

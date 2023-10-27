@@ -2,7 +2,7 @@
   session_start();
   $user = 0;
   $user = $_SESSION['user'];
-  include('config.php');
+  include_once('./includes/config.php');
   $cart_result = mysqli_query($link,"SELECT * FROM cart WHERE user_id=$user");
 
   while($hld = mysqli_fetch_assoc($cart_result))
