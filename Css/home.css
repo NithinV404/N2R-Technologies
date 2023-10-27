@@ -9,25 +9,6 @@ body
 {
     background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
 }
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-}
-nav{
-    flex-shrink: 0;
-    text-align: right;
-}
-nav ul{
-    display: inline-block;
-    list-style-type: none;
-}
-nav ul li{
-    display: inline-block;
-    margin-right: 50px;
-    font-size: 20px;
-}
 a{
     text-decoration: none;
     color: white;
@@ -87,73 +68,4 @@ h1{
 .header{
     box-shadow: 2rem white;
 }
-.header .row{
-    margin-top: 0;
-}
-.product:hover ~ hr {
-    margin-left: 15.5%;
-    width:15%;
-  }
-  
-.faq:hover ~ hr {
-    margin-left:38%;
-    width:14%
-  }
-  
-.login:hover ~ hr {
-    margin-left: 59%;
-    width: 8%;
-  }
-.register:hover ~ hr {
-    margin-left: 75%;
-    width:13%;
-}
-.logo
-{
-    margin-right: 50px;
-}
-.logo > img
-{
-    height: 100px;
-    width: 100px;
-}
-i
-{
-    display: block;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-    transition: ease-out 100ms;
-}
-i:hover
-{
-    color:#B993D6;
-    font-size: 1.8rem;
-}
-hr {
-    height: .25rem;
-    width:8%;
-    margin: 0;
-    background-image: linear-gradient(to right, #B993D6 0%, #8CA6DB  51%, #B993D6  100%);
-    border: none;
-    transition: .3s ease-in-out;
-  }
-  .photo
-  {
-      position: absolute;
-      height: 400px;
-      width: 600px;
-      object-fit:cover;
-      background:url("Assets/shop\ now\ 2.jpg");
-      box-shadow: 5px 5px 5px #28313b;
-      border-radius: 5px;
-      margin-top: -12rem;
-      transition: ease-out 100ms;
-  }
- .photo:hover
- {
-    margin-top: -14rem;
-    margin-left: -5rem;
-    height: 500px;
-    width: 700px;
- }
+

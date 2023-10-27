@@ -7,10 +7,11 @@
      $user = 0;
      $user = $_SESSION['user'];
      while ($temp = mysqli_fetch_assoc($result)) {
-         $cart_check = "SELECT * FROM cart WHERE prd_id=$temp[prd_id] AND user_id=$user";
+         $str = $temp['prd_id'];
+         $cart_check = "SELECT * FROM cart WHERE prd_id=$str AND user_id=$user";
          $ccr = mysqli_query($link, $cart_check);
 
-                 $str = $temp['prd_id'];
+                 
                  $cart_check = "SELECT * FROM cart WHERE prd_id=$str AND user_id=$user";
 
                  $ccr = mysqli_query($link, $cart_check);

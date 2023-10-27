@@ -16,7 +16,6 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 .card
 {
@@ -28,7 +27,7 @@ body
     box-shadow: 2rem white;
     position: relative;
 }
-i
+.card > i
 {
     position: relative;
     top: -15px;
@@ -165,7 +164,7 @@ input[type="checkbox"]
     text-decoration: none;
 }
 
-.btn
+.btn-card
 {
     background-image: linear-gradient(to right, #B993D6 0%, #8CA6DB  51%, #B993D6  100%);
     display:inline-block;
@@ -176,7 +175,7 @@ input[type="checkbox"]
     margin: 1rem 0 1rem;
     background-size: 200% auto;
 }
-.btn:hover 
+.btn-card:hover 
 {
     background-position: right center; /* change the direction of the change here */
     color: #fff;

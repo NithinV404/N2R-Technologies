@@ -46,11 +46,11 @@ $create_tb_order_history = "CREATE TABLE IF NOT EXISTS order_history (
 $content_details = "INSERT INTO details (id,first_name,last_name,ph_num,pass,email,address) values
 (1, 'temp', '1', '9373183839', '1234', 'temp1@gmail.com', 'Of course its temporary :D\r\n')";
 
-$content_product_details = "INSERT INTO product_details VALUES(1, 'Mouse', 'Just a mouse', 80, 'Assets\\db_images\\g203-hero.jfif');
-INSERT INTO product_details VALUES(2, 'Keyboard', 'Just a keyboard', 70, 'Assets\\db_images\\keyboard.jpg');
-INSERT INTO product_details VALUES(3, 'Motherboard', 'Its just a motherboard', 20, 'Assets\\db_images\\asus-rog-strix-x570-e-gaming-wifi-ii-cropped.jpg');
-INSERT INTO product_details VALUES(4, 'RTX 3060ti', 'GIGABYTE Nvidia GeForce RTX™ 3060 Gaming OC 12GB GDDR6 Graphics Card', 700, 'Assets\\db_images\\3060ti.jpg');
-INSERT INTO product_details VALUES(5, 'RX 6700 XT', '192-bit 12GB GDDR6 DP/HDMI Dual Torx 4.0 Fans FreeSync DirectX 12 VR Ready RGB Graphics Card', 600, 'Assets\\db_images\\rx6700.jpg');
+$content_product_details = "INSERT INTO product_details VALUES(1, 'Mouse', 'Just a mouse', 80, 'Assets/db_images/g203-hero.jfif');
+INSERT INTO product_details VALUES(2, 'Keyboard', 'Just a keyboard', 70, 'Assets/db_images/keyboard.jpg');
+INSERT INTO product_details VALUES(3, 'Motherboard', 'Its just a motherboard', 20, 'Assets/db_images/asus-rog-strix-x570-e-gaming-wifi-ii-cropped.jpg');
+INSERT INTO product_details VALUES(4, 'RTX 3060ti', 'GIGABYTE Nvidia GeForce RTX™ 3060 Gaming OC 12GB GDDR6 Graphics Card', 700, 'Assets/db_images/3060ti.jpg');
+INSERT INTO product_details VALUES(5, 'RX 6700 XT', '192-bit 12GB GDDR6 DP/HDMI Dual Torx 4.0 Fans FreeSync DirectX 12 VR Ready RGB Graphics Card', 600, 'Assets/db_images/rx6700.jpg');
 INSERT INTO product_details VALUES(6, 'Ryzen 5 3600 ', 'Desktop Processor 6 Cores up to 4.2 GHz 35MB Cache AM4 Socket (100-000000031)', 200, 'Assets/db_images/Ryzen53600.jpg\r\n');
 INSERT INTO product_details VALUES(7, 'Ryzen 9 3900XT', 'Desktop Processor 12 cores 24 Threads 70MB Cache 3.8GHz Upto 4.7GHz AM4 Socket 400 & 500 Series Chipset (100-100000277WOF)', 850, 'Assets/db_images/Ryzen93900.jpg');
 INSERT INTO product_details VALUES(8, ' Corsair CV550', ' CV Series, 80 Plus Bronze Certified, 550 Watt Non-Modular Power Supply - Black', 100, 'Assets/db_images/cv550_.jpg');
