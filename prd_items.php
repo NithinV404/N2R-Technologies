@@ -7,7 +7,7 @@
         while ($temp = mysqli_fetch_assoc($result)) {
            
             echo "
-            <a href='#popup' <div onclick=itemcard(${temp["prd_id"]}) class='item-card'>
+            <a href='#popup' <div onclick=itemcard(temp['prd_id']) class='item-card'>
             <img src='{$temp['prd_photo']}'/>
             <article><h2>{$temp["prd_name"]}</h2>
             <p>{$temp["prd_desc"]}</p>
