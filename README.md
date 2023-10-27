@@ -23,14 +23,6 @@ Install XAMPP
 
 - Click on admin button next to Myphp server 
 
-- Now create a database with name:
-```
-customer_table
-```
-- Now import the sql file from the project zip inside folder Mysql 
-
-- Now go back to XAMPP and now press admin button next to Apache server
-
 Now the project opens successfully in your preffered browser 
 
 The project is under development ⚠️
