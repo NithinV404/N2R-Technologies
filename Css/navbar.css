@@ -1,293 +1,283 @@
-.account
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin: 0 1rem 0 0;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap");
+* {
+  font-family: "Noto Sans", sans-serif;
 }
-.account > img
-{
-    border-radius: 100%;
-    height: 50px;
-    width: 50px;
-    transition: ease-out 100ms;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color:#28313b;
 }
-.account > img:hover
-{
-    height: 60px;
-    width: 60px;
+.active {
+  color: #b993d6;
 }
-.logo
-{
-    display: flex;
-    align-items: center;
-    margin: 1rem 0 1rem 1rem;
-    cursor: pointer;
+.account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 0 1rem 0 0;
 }
-.logo > img
-{
-    height: fit-content;
-    width: 100px;
-    margin: 0 5px 0 0 ;
+.account > img {
+  border-radius: 100%;
+  height: 50px;
+  width: 50px;
+  transition: ease-out 100ms;
 }
-.account
-{
-    cursor: pointer;
+.account > img:hover {
+  height: 60px;
+  width: 60px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0 1rem 1rem;
+  cursor: pointer;
+}
+.logo > img {
+  height: fit-content;
+  width: 100px;
+  margin: 0 5px 0 0;
+}
+.account {
+  cursor: pointer;
 }
 .account-content {
-    display: flex;
-    position: absolute;
-    background-color: rgb(34,34,34);
-    height: fit-content;
-    min-width: max-content;
-    padding: 20px;
-    top:4rem;
-    right: 5%;
-    box-shadow: 0px 8px 16px 0px rgba(44, 44, 44, 0.2);
-    z-index: 1;
-    border-radius: 5px;
-    
-  }
-  .account-card> img
-  {
-    height: 50px;
-    width: 50px;
-    border-radius: 100%;
-  }
-  .account-card
-  {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      margin:1rem 0 0 0;
-      color: white;
-  } 
-  .account-card > h2
-  {
-      margin:1rem 0 0 0;
-  }
-  .account-card > h3
-  {
-      margin: 1rem 0 0 0;
-  }
-  .navbar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  position: absolute;
+  background-color: rgb(34, 34, 34);
+  height: fit-content;
+  min-width: max-content;
+  padding: 20px;
+  top: 4rem;
+  right: 5%;
+  box-shadow: 0px 8px 16px 0px rgba(44, 44, 44, 0.2);
+  z-index: 1;
+  border-radius: 5px;
 }
-nav{
-    flex-shrink: 0;
-    text-align: right;
+.account-card > img {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
 }
-nav ul{
-    display: inline-block;
-    list-style-type: none;
+.account-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1rem 0 0 0;
+  color: white;
 }
-nav ul li{
-    display: inline-block;
-    margin-right: 50px;
-    font-size: 20px;
+.account-card > h2 {
+  margin: 1rem 0 0 0;
 }
-.account-card > .btn
-{
-    padding: 5px;
-}
-a{
-    text-decoration: none;
-    color: white;
-    
-}
-p{
-    color: white;
-    font-size: 20px;
-}
-h1{
-    color: white;
-    font-weight: bolder;
-    font-size: 20px;
-}
-.header .row{
-    margin-top: 0;
-}
-.product:hover ~ hr {
-    margin-left: 15.5%;
-    width:15%;
-  }
-  
-.faq:hover ~ hr {
-    margin-left:38%;
-    width:14%
-  }
-  
-.login:hover ~ hr {
-    margin-left: 59%;
-    width: 8%;
-  }
-.register:hover ~ hr {
-    margin-left: 75%;
-    width:13%;
-}
-.logo
-{
-    margin-right: 50px;
-}
-.logo > img
-{
-    height: 100px;
-    width: 100px;
-}
-i
-{
-    display: block;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-    transition: ease-out 100ms;
-}
-i:hover
-{
-    color:#B993D6;
-    font-size: 1.8rem;
-}
-hr {
-    height: .25rem;
-    width:8%;
-    margin: 0;
-    background-image: linear-gradient(to right, #B993D6 0%, #8CA6DB  51%, #B993D6  100%);
-    border: none;
-    transition: .3s ease-in-out;
-  }
-  .photo
-  {
-      position: absolute;
-      height: 400px;
-      width: 600px;
-      object-fit:cover;
-      background:url("Assets/shop\ now\ 2.jpg");
-      box-shadow: 5px 5px 5px #28313b;
-      border-radius: 5px;
-      margin-top: -12rem;
-      transition: ease-out 100ms;
-  }
- .photo:hover
- {
-    margin-top: -14rem;
-    margin-left: -5rem;
-    height: 500px;
-    width: 700px;
- }
- .btn{ 
-    background-image: linear-gradient(to right, #B993D6 0%, #8CA6DB  51%, #B993D6  100%);
-    display: inline-block;
-    color:white;
-    text-decoration: none;
-    padding: 10px 55px 10px 55px;
-    border-radius: 5px;
-    margin: 1rem 0 1rem;
-    font-size: 25px;
-    background-size: 200% auto;
-}
-.btn:hover{
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
-}
-#cart-card-holder
-{
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    border-radius: 10px;
-}
-#cart-card
-{
-    display: flex;
-    position: absolute;
-    flex-shrink: 1;
-    flex-direction: column;
-    background-color: rgb(37, 37, 37);
-    color: white;
-    max-height: 40rem;
-    max-width: 90vw;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border:#B993D6 3px solid;
-    border-radius: 5px;
-    overflow: hidden;
-    overflow-y: scroll;
-    color-scheme: dark;
+.account-card > h3 {
+  margin: 1rem 0 0 0;
 }
 
-#cart-card > h2
-{
-    font-size: 2rem;
-    margin:20px 0px 0px 20px;
+nav {
+  flex-shrink: 0;
+  text-align: right;
 }
-#cart-total
-{
-    background-image:linear-gradient(315deg, #485461 0%, #28313b 80%);
-    padding:20px;
-    margin:20px;
-    border-radius: 10px;
+nav ul {
+  display: inline-block;
+  list-style-type: none;
 }
-#checkout-btn
- {
-     position: sticky;
-     margin: 10px;
- }
- #no-cart-items
- {
-     padding: 30px;
- }
- .item-card-holder
-  {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .item-card
-  {
-      display: flex;
-      justify-content:flex-start;
-      flex-direction: column;
-      border-radius: 5px;
-      flex: 0;
-      margin: 0.5rem;
-      background-color:rgb(37, 37, 37);
-      width: 15rem;
-      height: 25rem;
-      color:white;
-      padding: 10px;
-  }
-  .item-card > img
-  {
-      margin:18px;
-      height: 190px;
-      width: 200px;
-      border-radius: 5px;
-      flex-shrink: 0;
-      flex-grow: 0;
-  }
-  .item-card > article
-  {
-      margin:1rem 1rem 0 0;
-  }
-  .item-card > article > h1
-  {
-      padding-top: 1rem;
-      font-size: 2rem;
-  }
-  .item-card > article > form > button
-  {
-      border:none;
-      font-weight: 500;
-      border-radius: 5px;
-      background-image:linear-gradient(to right, #B993D6 0%, #8CA6DB  51%, #B993D6  100%);
-      background-size: 200% auto;
-      padding: 10px;
-      margin:1rem 0 0 0;
-      cursor: pointer;
-  }
-  
+nav ul li {
+  display: inline-block;
+  margin-right: 50px;
+  font-size: 20px;
+}
+.account-card > .btn {
+  padding: 5px;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+p {
+  color: white;
+  font-size: 20px;
+}
+h1 {
+  color: white;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.header .row {
+  margin-top: 0;
+}
+.product:hover ~ hr {
+  margin-left: 15.5%;
+  width: 15%;
+}
+
+.faq:hover ~ hr {
+  margin-left: 38%;
+  width: 14%;
+}
+
+.login:hover ~ hr {
+  margin-left: 59%;
+  width: 8%;
+}
+.register:hover ~ hr {
+  margin-left: 75%;
+  width: 13%;
+}
+.logo {
+  margin-right: 50px;
+}
+.logo > img {
+  height: 100px;
+  width: 100px;
+}
+span > i {
+  display: block;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: ease-out 100ms;
+}
+span > i:hover {
+  color: #b993d6;
+}
+hr {
+  height: 0.25rem;
+  width: 8%;
+  margin: 0;
+  background-image: linear-gradient(
+    to right,
+    #b993d6 0%,
+    #8ca6db 51%,
+    #b993d6 100%
+  );
+  border: none;
+  transition: 0.3s ease-in-out;
+}
+.photo {
+  position: absolute;
+  height: 400px;
+  width: 600px;
+  object-fit: cover;
+  background: url("Assets/shop\ now\ 2.jpg");
+  box-shadow: 5px 5px 5px #28313b;
+  border-radius: 5px;
+  margin-top: -12rem;
+  transition: ease-out 100ms;
+}
+.photo:hover {
+  margin-top: -14rem;
+  margin-left: -5rem;
+  height: 500px;
+  width: 700px;
+}
+.btn {
+  background-image: linear-gradient(
+    to right,
+    #b993d6 0%,
+    #8ca6db 51%,
+    #b993d6 100%
+  );
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding:10px 55px 10px 55px;
+  border-radius: 5px;
+  margin: 1rem 0 1rem;
+  background-size: 200% auto;
+  border: none;
+}
+.btn:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+#cart-card-holder {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border-radius: 10px;
+}
+#cart-card {
+  display: flex;
+  position: absolute;
+  flex-shrink: 1;
+  flex-direction: column;
+  background-color: rgb(37, 37, 37);
+  color: white;
+  max-height: 40rem;
+  max-width: 90vw;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border: #b993d6 3px solid;
+  border-radius: 5px;
+  overflow: hidden;
+  overflow-y: scroll;
+  color-scheme: dark;
+}
+
+#cart-card > h2 {
+  font-size: 2rem;
+  margin: 20px 0px 0px 20px;
+}
+#cart-total {
+  background-image: linear-gradient(315deg, #485461 0%, #28313b 80%);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+}
+#checkout-btn {
+  position: sticky;
+  margin: 10px;
+}
+#no-cart-items {
+  padding: 30px;
+}
+.item-card-holder {
+  display: flex;
+  flex-wrap: wrap;
+}
+.item-card {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  border-radius: 5px;
+  flex: 0;
+  margin: 0.5rem;
+  background-color: rgb(37, 37, 37);
+  width: 15rem;
+  height: 25rem;
+  color: white;
+  padding: 10px;
+}
+.item-card > img {
+  margin: 18px;
+  height: 190px;
+  width: 200px;
+  border-radius: 5px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+.item-card > article {
+  margin: 1rem 1rem 0 0;
+}
+.item-card > article > h1 {
+  padding-top: 1rem;
+  font-size: 1rem;
+}
+.item-card > article > form > button {
+  border: none;
+  font-weight: 500;
+  border-radius: 5px;
+  background-image: linear-gradient(
+    to right,
+    #b993d6 0%,
+    #8ca6db 51%,
+    #b993d6 100%
+  );
+  background-size: 200% auto;
+  padding: 10px;
+  margin: 1rem 0 0 0;
+  cursor: pointer;
+}

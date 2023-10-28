@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset ="UTF-8">
-        <title>Home page</title>
+        <title>Home</title>
         <link rel="icon" href="Assets/logo.png">
         <link rel="stylesheet" href="Css/home.css">
         <link rel="stylesheet" href="Css/navbar.css">

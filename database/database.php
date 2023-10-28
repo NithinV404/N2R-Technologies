@@ -14,7 +14,7 @@ $create_tb_product_details ="CREATE TABLE IF NOT EXISTS product_details(
     )";
 
 $create_tb_details ="CREATE TABLE IF NOT EXISTS details (
-    id int(10) NOT NULL,
+    id int(10) NOT NULL AUTO_INCREMENT,
     first_name varchar(20) NOT NULL,
     last_name varchar(20) NOT NULL,
     ph_num varchar(10) NOT NULL,

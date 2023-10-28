@@ -1,5 +1,19 @@
-<?php
-    session_start();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="icon" href="Assets/logo.png">
+    <link href="Css/signup.css" rel="stylesheet">
+    <link href="Css/navbar.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <?php include_once('./includes/navbar.php'); ?>
+    <?php
     include_once("./includes/config.php");
 
     if(isset($_POST['submit']))
@@ -43,21 +57,6 @@
 
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
-    <link rel="icon" href="Assets/logo.png">
-    <link href="Css/signup.css" rel="stylesheet">
-    <link href="Css/navbar.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-</head>
-<body>
-    <?php include_once('./includes/navbar.php'); ?>
     <div class="main">
     <div class="card">
         <i class="fas fa-user-plus"></i>
@@ -72,8 +71,10 @@
         <input id="con-pass"  name="confirm_password" type="password" placeholder="Confirm Password*" required>
         <input type="checkbox" required>
        <a id="tandc" href="#">Agree to terms and conditions*</a>
-       <a id="login-a"  href="Login.php">Sign in</a>
-        <button href="#" name="submit" id="register" class="btn-card" >Register</button>
+       <div class="reg-btn-holder">
+       <a id="login-a" class="btn"  href="Login.php">Sign in</a>
+       <button href="#" name="submit" id="register" class="btn-card" >Register</button>
+       </div>
     </form>
 </div>
 </div>

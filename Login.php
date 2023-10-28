@@ -33,7 +33,7 @@
       while ($d = mysqli_fetch_assoc($result)) {
         $_SESSION['user'] = $d['id'];
       }
-      header("Location:home.php");
+      echo "<script>window.location = 'home.php';</script>";
     } else {
       echo "<h3 style='text-align:center;
           border: red 2px solid;

@@ -1,30 +1,6 @@
-<?php 
+<?php
 include_once('./includes/config.php');
 session_start();
-$sql =  "SELECT * FROM product_details ";
-$result = mysqli_query($link, $sql);
-if(isset($_SESSION['user']))
-$user = $_SESSION['user'];
-while ($temp = mysqli_fetch_assoc($result)) {
-
-    $str = $temp['prd_id'];
-    if (isset($_POST[$str])) {
-        if($_SESSION['logged']==1)
-        {
-        $cart_check = "SELECT * FROM cart WHERE prd_id=$temp[prd_id] AND user_id=$user";
-        $ccr = mysqli_query($link, $cart_check);
-        if (mysqli_num_rows($ccr) == 1) {
-            mysqli_query($link, "DELETE FROM cart WHERE prd_id=$str AND user_id=$user");
-        } else {
-            mysqli_query($link, "INSERT INTO cart(prd_id,user_id)VALUES($str,$user)");
-        }
-    }
-    else
-    {
-        header("Location:Login.php");
-    }
-    }
-}
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <div class="navbar">
@@ -33,12 +9,12 @@ while ($temp = mysqli_fetch_assoc($result)) {
     </div>
     <nav>
         <ul>
-            <li class="home"><a href="home.php">HOME</a></li>
-            <li class="product"><a href="products.php">PRODUCTS</a></li>
-            <li class="faq"><a href="about.php">ABOUT US</a></li>
-            <li class="login"><a href="login.php">LOGIN</a></li>
-            <li class="register"><a href="signup.php">REGISTER</a></li>
-            <i class="fas fa-shopping-cart" id='cart-logo'></i>
+            <li class="home"><a href="home.php" id='home'>HOME</a></li>
+            <li class="product"><a href="products.php" id='product'>PRODUCTS</a></li>
+            <li class="faq"><a href="about.php" id='about'>ABOUT US</a></li>
+            <li class="login"><a href="login.php" id='login'>LOGIN</a></li>
+            <li class="register"><a href="signup.php" id='register'>REGISTER</a></li>
+            <span><i class="fas fa-shopping-cart" id='cart-logo'></i></span>
             <hr />
         </ul>
     </nav>
@@ -47,6 +23,8 @@ while ($temp = mysqli_fetch_assoc($result)) {
         <div class="account-content" id="account-content">
             <div class="account-card" id="account-card"><img src="Assets/shop now 2.jpg" />
                 <?php
+                if (isset($_SESSION['user']))
+                $user = $_SESSION['user'];
                 $username = '';
                 $email = '';
                 $logged = 0;
@@ -81,7 +59,7 @@ while ($temp = mysqli_fetch_assoc($result)) {
                     session_start();
                     $_SESSION['logged'] = 0;
                     $_SESSION['user'] = 0;
-                    header("Refresh:0");
+                    echo "<script>window.location.reload()</script>";
                 }
                 ?>
             </div>
@@ -105,13 +83,27 @@ while ($temp = mysqli_fetch_assoc($result)) {
         </div>
     </div>
 </div>
-<div class="border-holder">
-    <div class="border">
-    </div>
-</div>
 <script>
-
     $(document).ready(function() {
+        switch ($('title').text().toString()) {
+            case 'Home':
+                $('#home').addClass('active');
+                break;
+            case 'Products':
+                $('#product').addClass('active');
+                break;
+            case 'About':
+                $('#about').addClass('active');
+                break;
+            case 'Login':
+                $('#login').addClass('active');
+                break;
+            case 'Signup':
+                $('#register').addClass('active');
+                break;
+        }
+
+
         btn();
         $('#account-content').hide();
         $('#cart-card').hide();

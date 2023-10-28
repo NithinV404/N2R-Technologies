@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Padauk:wght@700&family=Raleway:wght@700&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Raleway',sans-serif;
 }
 body
 {
@@ -54,23 +52,6 @@ h1{
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-around;
-}
-
-.btn{ 
-    background-image: linear-gradient(to right, #B993D6 0%, #8CA6DB  51%, #B993D6  100%);
-    display: inline-block;
-    color:white;
-    text-decoration: none;
-    padding: 10px 55px 10px 55px;
-    border-radius: 5px;
-    margin: 1rem 0 1rem;
-    font-size: 25px;
-    background-size: 200% auto;
-}
-.btn:hover{
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
 }
 .header{
     box-shadow: 2rem white;

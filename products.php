@@ -1,32 +1,3 @@
-<?php
-include('./includes/config.php');
-$sql =  "SELECT * FROM product_details ";
-$result = mysqli_query($link, $sql);
-$user = 0;
-if(isset($_SESSION['user']))
-$user = $_SESSION['user'];
-while ($temp = mysqli_fetch_assoc($result)) {
-
-    $str = $temp['prd_id'];
-    if (isset($_POST[$str])) {
-        if($_SESSION['logged']==1)
-        {
-        $cart_check = "SELECT * FROM cart WHERE prd_id=$temp[prd_id] AND user_id=$user";
-        $ccr = mysqli_query($link, $cart_check);
-        if (mysqli_num_rows($ccr) == 1) {
-            mysqli_query($link, "DELETE FROM cart WHERE prd_id=$str AND user_id=$user");
-        } else {
-            mysqli_query($link, "INSERT INTO cart(prd_id,user_id)VALUES($str,$user)");
-        }
-    }
-    else
-    {
-        header("Location:Login.php");
-    }
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,20 +12,41 @@ while ($temp = mysqli_fetch_assoc($result)) {
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <?php include_once('./includes/navbar.php'); ?>
+    <?php include_once('./includes/navbar.php');
+    $sql =  "SELECT * FROM product_details ";
+    $result = mysqli_query($link, $sql);
+    if (isset($_SESSION['user']))
+        $user = $_SESSION['user'];
+    while ($temp = mysqli_fetch_assoc($result)) {
+    
+        $str = $temp['prd_id'];
+        if (isset($_POST[$str])) {
+            if ($_SESSION['logged'] == 1) {
+                $cart_check = "SELECT * FROM cart WHERE prd_id=$temp[prd_id] AND user_id=$user";
+                $ccr = mysqli_query($link, $cart_check);
+                if (mysqli_num_rows($ccr) == 1) {
+                    mysqli_query($link, "DELETE FROM cart WHERE prd_id=$str AND user_id=$user");
+                } else {
+                    mysqli_query($link, "INSERT INTO cart(prd_id,user_id)VALUES($str,$user)");
+                }
+            } else {
+                echo "<script>window.location.href='login.php'</script>";
+            }
+        }
+    }
+?>
     <div class="itemcard-pop-holder" id='popup'>
         <div class="itemcard-pop">
             </div>
     <div id="name" class="items-holder"> </div>
-    <script src="./Js/products.js"></script>
     <script>
         $(document).ready(function() {
             items();
-            btn();
+            prd_btn();
         })
         $('.card-btn').click(function() {
             items();
-            btn();
+            prd_btn();
         });
         $('.logo').click(()=>{
             window.location.href = 'home.php';
@@ -62,7 +54,7 @@ while ($temp = mysqli_fetch_assoc($result)) {
         $('#log-in').click(()=>{
             window.location.href = 'Login.php';
         })
-       function btn() {
+       function prd_btn() {
             $.ajax({
                 type: "POST",
                 url: "products_details.php",

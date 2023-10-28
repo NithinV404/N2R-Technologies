@@ -1,11 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Padauk:wght@700&family=Raleway:wght@700&display=swap');
 *
 {
     margin:0;
     padding:0;
-    font-family: 'Raleway',sans-serif;
 }
-
 body
 {
     background-image: url(../Assets/christian-wiediger-c3ZWXOv1Ndc-unsplash.jpg);
