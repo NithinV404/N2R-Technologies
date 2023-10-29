@@ -1,11 +1,14 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset ="UTF-8">
         <title>Home</title>
-        <link rel="icon" href="Assets/logo.png">
-        <link rel="stylesheet" href="Css/home.css">
-        <link rel="stylesheet" href="Css/navbar.css">
+        <link rel="icon" href="../Assets/logo.png">
+        <link rel="stylesheet" href="../Css/home.css">
+        <link rel="stylesheet" href="../Css/navbar.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     </head>
@@ -13,7 +16,7 @@
 <div class="header">
     <div class="container">
         <?php
-        include_once('./includes/navbar.php');
+        include_once('../includes/navbar.php');
         ?>
         <div class="row">
            <div class="col-2">
@@ -22,7 +25,7 @@
                <a id='shop-now' href="products.php" class="btn">SHOP NOW &rarr; </a> 
             </div>
            <div class="col-2">
-               <img class="photo" src="Assets/shop now 2.jpg">
+               <img class="photo" src="../Assets/shop now 2.jpg">
                
            </div>
        </div>

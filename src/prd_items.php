@@ -1,6 +1,6 @@
 <?php
         session_start();
-        include_once('./includes/config.php');
+        include_once('../includes/config.php');
         $sql =  "SELECT * FROM product_details ";
         $result = mysqli_query($link, $sql);
 
@@ -12,9 +12,9 @@
             <article><h2>{$temp["prd_name"]}</h2>
             <p>{$temp["prd_desc"]}</p>
             <h1>{$temp["prd_price"]} &#x20B9</h1> 
-            <form method='post' action='#'>
+            <form method='post' id='item-form' action='#'>
             <button class='card-btn' id='{$temp["prd_id"]}' name='{$temp["prd_id"]}' value='submit'></button>
             </form>
             </article></div>";
-        }
+        }   
             ?>

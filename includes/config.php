@@ -1,12 +1,12 @@
 <?php
 /* Database credentials. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
+define('DB_SERVER', 'db');
+define('DB_USERNAME', 'php_docker');
+define('DB_PASSWORD', 'password');
 define('DB_NAME',"n2r_technologies");
 
-include('./database/database.php');
+include('../database/database.php');
  
 /* Attempt to connect to MySQL database */
 $link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD);

@@ -1,5 +1,5 @@
 <?php
-    include_once('./includes/config.php');
+    include_once('../includes/config.php');
     session_start();
     $user = 0;
     $user = $_SESSION['user'];

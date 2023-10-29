@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,13 +8,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
-    <link rel="icon" href="Assets/logo.png">
-    <link rel="stylesheet" href="Css/navbar.css">
-    <link rel="stylesheet" href="Css/about.css">
+    <link rel="icon" href="../Assets/logo.png">
+    <link rel="stylesheet" href="../Css/navbar.css">
+    <link rel="stylesheet" href="../Css/about.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <?php include_once("./includes/navbar.php") ?>
+    <?php include_once("../includes/navbar.php") ?>
     <div class="content-holder">
     
     <div class="text-holder">
@@ -28,7 +31,7 @@
         then a confirmation mail is sent to the user and transaction is recorded<br></p>
     </div>
     <div class="img-holder">
-        <img src="./Assets/shop now 2.jpg" alt="">
+        <img src="../Assets/shop now 2.jpg" alt="">
     <!-- </div>
         <img class="photo" src="images/about.jpg">
         <img class="icon" src="images/facebook.png">

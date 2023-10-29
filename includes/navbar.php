@@ -1,15 +1,14 @@
 <?php
-include_once('./includes/config.php');
-session_start();
+include_once('../includes/config.php');
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <div class="navbar">
     <div class="logo">
-        <img src="Assets/logo.png" alt="n2r logo" width="250px" height="250px" />
+        <img src="../Assets/logo.png" alt="n2r logo" width="250px" height="250px" />
     </div>
     <nav>
         <ul>
-            <li class="home"><a href="home.php" id='home'>HOME</a></li>
+            <li class="home"><a href="index.php" id='home'>HOME</a></li>
             <li class="product"><a href="products.php" id='product'>PRODUCTS</a></li>
             <li class="faq"><a href="about.php" id='about'>ABOUT US</a></li>
             <li class="login"><a href="login.php" id='login'>LOGIN</a></li>
@@ -19,9 +18,9 @@ session_start();
         </ul>
     </nav>
     <div class="account" id="account">
-        <img src="Assets/shop now 2.jpg" />
+        <img src="../Assets/shop now 2.jpg" />
         <div class="account-content" id="account-content">
-            <div class="account-card" id="account-card"><img src="Assets/shop now 2.jpg" />
+            <div class="account-card" id="account-card"><img src="../Assets/shop now 2.jpg" />
                 <?php
                 if (isset($_SESSION['user']))
                 $user = $_SESSION['user'];
@@ -66,19 +65,19 @@ session_start();
         </div>
     </div>
 </div>
-<div class="itemcard-pop-holder" id='popup'>
-    <div class="itemcard-pop">
+<div class="cartcard-pop-holder" id='popup'>
+    <div class="cartcard-pop">
     </div>
 </div>
 <div id="cart-card-holder">
     <div id="cart-card">
         <h2 class="cart-header">Cart</h2>
 
-        <div class='item-card-holder' id="cart_card_det">
+        <div class='cart-card-holder' id="cart_card_det">
         </div>
         <div class='btm-div'>
             <h3 id='cart-total'></h3>
-            <button id="checkout-btn" class="btn" disabled>Checkout -></button>
+            <button id="checkout-btn" class="btn">Checkout -></button>
 
         </div>
     </div>
@@ -140,4 +139,9 @@ session_start();
         })
 
     }
+
+    $("#checkout-btn").click(function() {
+        if(($('.cart-card').length)!=0)
+        window.location.href = "checkout.php";
+    })
 </script>

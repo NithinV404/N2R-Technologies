@@ -1,9 +1,9 @@
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="Assets/logo.png">
+  <link rel="icon" href="../Assets/logo.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script
@@ -11,7 +11,7 @@
   integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
   crossorigin="anonymous"></script>
   <title>Checkout</title>
-<link rel="stylesheet" href="css/checkout.css">
+<link rel="stylesheet" href="../Css/checkout.css">
 </head>
 <body>
   <div class="header">
@@ -19,7 +19,7 @@
         <div class="navbar">
             <div class="logo">
 
-                <a href="home.php"> <img src="./Assets/logo.png" alt="n2r logo" width="100px" height="100px"></a>
+                <a href="index.php"> <img src="../Assets/logo.png" alt="n2r logo" width="100px" height="100px"></a>
                 <h2>N2R Solutions</h2>
             </div>
 
@@ -39,8 +39,7 @@
         <th>Product Price</th>
         </tr>
          <?php 
-        include_once("config.php");
-        session_start();
+        include_once("../includes/config.php");
         $user = 0;
         $user = $_SESSION['user'];
         $Items = mysqli_query($link,"SELECT prd_id FROM cart WHERE user_id=$user");
@@ -111,7 +110,7 @@
                             mysqli_query($link,"INSERT INTO order_history (prd_id,user_id,price,date_time)VALUES($prd_id,$user,$price,now())");
                           }
                        }
-                      header("Location:bill.php");
+                      echo "<script>window.location.href='bill.php'</script>";
                      }
             ?>
             </form>
@@ -126,7 +125,7 @@
   $(document).ready(function(){  
          $.ajax({  
          type:"POST",  
-         url:"checkout_details.php",  
+         url:"./checkout_details.php",  
          success: function(data){  
             $('#add-card').html(data);
          }  
