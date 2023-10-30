@@ -38,7 +38,6 @@ $create_tb_order_history = "CREATE TABLE IF NOT EXISTS order_history (
     user_id int(50) NOT NULL,
     price int(50) NOT NULL,
     date_time datetime NOT NULL,
-    PRIMARY KEY (prd_id,user_id),
     FOREIGN KEY (prd_id) references product_details(prd_id),
     FOREIGN KEY (user_id) references details(id)
     )";
