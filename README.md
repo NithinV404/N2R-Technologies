@@ -5,25 +5,31 @@
 
 Instructions to run the website on your local machine 
 
-Install XAMPP
-<a href="https://www.apachefriends.org/index.html">Click here</a>
+## Docker Installation
 
-## Download the project zip 
+- Clone the repo 
 
-- Locate the install location of XAMPP
- By default C:\xampp\htdocs
+- Navigate to the folder 
 
-- Browse into htdocs folder 
+- Run the Command 
 
-- Delete all the files in the folder 
+```
+docker-compose up --build
+```
+- By default the port is 80
 
-- Copy the files from zip and place it inside that folder
+```
+https://localhost:80
+```
+- If their some database error try to login into myphpadmin once and refresh the website
 
-- Launch XAMPP and start Apache and Myphp server 
+- Default port for MyphpAdmin is 8081
 
-- Click on admin button next to Myphp server 
+```
+https://localhost:8081
+```
 
-Now the project opens successfully in your preffered browser 
+Now the project opens successfully in your prefered browser 
 
 The project is under development ⚠️
 There may be some bugs 🪲
