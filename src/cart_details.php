@@ -1,26 +1,14 @@
 <?php 
 session_start();
 include_once('../includes/config.php');
- $sql =  "SELECT * FROM product_details ";
- $result = mysqli_query($link, $sql);
- $user = 0;
- if(isset($_SESSION['user']))
+ if($user = isset($_SESSION['user']))
  $user = $_SESSION['user'];
- //Cart items displayed from database 
 
- while ($temp = mysqli_fetch_assoc($result)) {
-     $cart_check = "SELECT * FROM cart WHERE prd_id=$temp[prd_id] AND user_id=$user";
-     $ccr = mysqli_query($link, $cart_check);
-     if (mysqli_num_rows($ccr) == 1) {
-        echo "<div class='cart-card'><img src='{$temp['prd_photo']}'/>
-        <article>
-            <h2>{$temp["prd_name"]}</h2>
-            <h1>{$temp['prd_price']} &#x20B9</h1>
-        </article>
-        <form method='post' action='#'>
-                <button class='btn' name='{$temp["prd_id"]}' value='submit'>Remove</button>
-            </form>
-        </div>";
-     }
-    }
+    $cart_check = "SELECT * FROM cart,product_details product WHERE user_id=? AND cart.prd_id=product.prd_id";
+    $sprp = mysqli_prepare($link,$cart_check);
+    mysqli_stmt_bind_param($sprp,'i',$user);
+    mysqli_stmt_execute($sprp);
+    $result = mysqli_stmt_get_result($sprp);
+    $jsondata = json_encode(mysqli_fetch_all($result,MYSQLI_ASSOC));
+    echo $jsondata;
 ?>

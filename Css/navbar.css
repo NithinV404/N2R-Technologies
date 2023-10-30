@@ -212,10 +212,10 @@ hr {
   z-index: 1;
   border: #b993d6 3px solid;
   border-radius: 5px;
-  overflow: hidden;
-  overflow-y: scroll;
+  overflow-x: hidden;
   color-scheme: dark;
 }
+
 
 #cart-card > h2 {
   font-size: 2rem;
@@ -258,7 +258,7 @@ hr {
 }
 .cart-card > article
 {
-  overflow: hidden;
+  overflow-x: hidden;
   white-space:nowrap;
 }
 .cart-card > article > h1 {

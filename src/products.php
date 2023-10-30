@@ -15,38 +15,17 @@ session_start();
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <?php include_once('../includes/navbar.php');
-    $sql =  "SELECT * FROM product_details ";
-    $result = mysqli_query($link, $sql);
-    if (isset($_SESSION['user']))
-        $user = $_SESSION['user'];
-    while ($temp = mysqli_fetch_assoc($result)) {
-    
-        $str = $temp['prd_id'];
-        if (isset($_POST[$str])) {
-            if ($_SESSION['logged'] == 1) {
-                $cart_check = "SELECT * FROM cart WHERE prd_id=$temp[prd_id] AND user_id=$user";
-                $ccr = mysqli_query($link, $cart_check);
-                if (mysqli_num_rows($ccr) == 1) {
-                    mysqli_query($link, "DELETE FROM cart WHERE prd_id=$str AND user_id=$user");
-                } else {
-                    mysqli_query($link, "INSERT INTO cart(prd_id,user_id)VALUES($str,$user)");
-                }
-            } else {
-                echo "<script>window.location.href='login.php'</script>";
-            }
-        }
-    }
-?>
+    <?php include_once('../includes/navbar.php') ?>
     <div class="itemcard-pop-holder" id='popup'>
         <div class="itemcard-pop">
             </div>
+    </div>
     <div id="name" class="items-holder"> </div>
     <script>
         $(document).ready(function() {
             items();
-            prd_btn()
-        })
+            prd_btn();
+        });
         $('.card-btn').click(function() {
             items();
             prd_btn();
@@ -57,6 +36,7 @@ session_start();
         $('#log-in').click(()=>{
             window.location.href = 'Login.php';
         })
+
        function prd_btn() {
             $.ajax({
                 type: "POST",
@@ -65,39 +45,57 @@ session_start();
                     var dc = data.split(',');
                     var i = 0;
                     $.each(dc, e => {
-                        $(`#${dc[e]}`).text(dc[e + 1]);
+                        $("#"+dc[e]).text(dc[e + 1]);
+                    changestate(dc[e]);
                     })
                 }
             })
         }
 
         function items() {
+            var htmlcode = '';
             $.ajax({
-                type: "POST",
+                type: "GET",
                 url: "prd_items.php",
-                success: function(data) {
-                    $('.items-holder').html(data)
+                dataType: "json",
+                success: function(data){
+                    const value = JSON.parse(JSON.stringify(data));
+                    value.forEach(items => {
+                    htmlcode +=
+                    `<div class="item-card">
+                    <img src="${items.prd_photo}" />
+                    <article>
+                    <h2>${items.prd_name}</h2>
+                    <p>${items.prd_desc}</p>
+                    <h1> &#x20B9 ${items.prd_price} </h1>
+                    <button class="card-btn" id="btn_${items.prd_id}" name="${items.prd_id}"
+                    onclick=addtocart(${items.prd_id},event)></button>
+                    </article>
+                    </div>`
+                    });
+                    $('.items-holder').html(htmlcode);
                 }
             })
         }
+       
         
-        function itemcard(id)
-        {
-          var id=id;
-          $('.itemcard-pop').css({'display':'flex'})
-          $.ajax({
-            type: 'POST',
-            url: 'itemcard-pop.php',
-            data: {id:id},
-            success: function(response) {
-                $('.itemcard-pop').html(response)
-        }
-          })
-        }
-        function closepop()
-        {
-            $('.itemcard-pop').css({'display':'none'})
-        }
+        // function itemcard(id)
+        // {
+        //   var id=id;
+        //   $('.itemcard-pop').css({'display':'flex'})
+        //   $.ajax({
+        //     type: 'POST',
+        //     url: 'itemcard-pop.php',
+        //     data: {id:id},
+        //     success: function(response) {
+        //         $('.itemcard-pop').html(response)
+        // }
+        //   })
+        // }
+        // function closepop()
+        // {
+        //     $('.itemcard-pop').css({'display':'none'})
+        // }
     </script>
 </body>
 </html>

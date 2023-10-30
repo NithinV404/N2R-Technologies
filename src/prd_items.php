@@ -1,20 +1,10 @@
 <?php
         session_start();
         include_once('../includes/config.php');
-        $sql =  "SELECT * FROM product_details ";
-        $result = mysqli_query($link, $sql);
-
-        while ($temp = mysqli_fetch_assoc($result)) {
-           
-            echo "
-            <a href='#popup' <div onclick=itemcard(".$temp['prd_id'].") class='item-card'>
-            <img src='{$temp['prd_photo']}'/>
-            <article><h2>{$temp["prd_name"]}</h2>
-            <p>{$temp["prd_desc"]}</p>
-            <h1>{$temp["prd_price"]} &#x20B9</h1> 
-            <form method='post' id='item-form' action='#'>
-            <button class='card-btn' id='{$temp["prd_id"]}' name='{$temp["prd_id"]}' value='submit'></button>
-            </form>
-            </article></div>";
-        }   
-            ?>
+        $sql =  "SELECT * FROM product_details";
+        $sprp = mysqli_prepare($link,$sql);
+        mysqli_stmt_execute($sprp);
+        $result = mysqli_stmt_get_result($sprp);
+        $jsondata = json_encode(mysqli_fetch_all($result,MYSQLI_ASSOC));
+        echo $jsondata;
+        ?>

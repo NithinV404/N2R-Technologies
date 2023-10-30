@@ -1,5 +1,10 @@
 <?php 
 session_start();
+if(!isset($_SESSION['logged']))
+{
+    $_SESSION['logged'] = 0;
+    $_SESSION['user'] = 0;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

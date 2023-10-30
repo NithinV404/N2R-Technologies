@@ -3,7 +3,9 @@ version: '3.9'
 services:
   www:
     image: php:apache
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - ./:/var/www/html/
     ports:

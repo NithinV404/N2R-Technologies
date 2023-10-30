@@ -4,7 +4,7 @@
   $user = $_SESSION['user'];
   include_once('../includes/config.php');
   $cart_result = mysqli_query($link,"SELECT * FROM cart WHERE user_id=$user");
-
+  $total = 0;
   while($hld = mysqli_fetch_assoc($cart_result))
   {
       $item = $hld['prd_id'];

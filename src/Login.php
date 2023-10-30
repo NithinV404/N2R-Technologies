@@ -20,8 +20,6 @@ session_start();
 <body>
   <?php include_once('../includes/navbar.php'); ?>
   <?php
-  $_SESSION['logged'] = 0;
-  $_SESSION['user'] = 0;
 
   include_once("../includes/config.php");
   if (isset($_POST['login'])) {

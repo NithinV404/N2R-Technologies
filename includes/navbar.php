@@ -37,7 +37,7 @@ include_once('../includes/config.php');
                 } else {
                 ?>
                     <h2>Not logged in</h2>
-                    <a class='btn' id='log-in' href="../Login.php">Log in</a>
+                    <a class='btn' id='log-in' href="../src/login.php">Log in</a>
                 <?php
                 }
                 ?>
@@ -102,8 +102,8 @@ include_once('../includes/config.php');
                 break;
         }
 
-
-        btn();
+        cart();
+        
         $('#account-content').hide();
         $('#cart-card').hide();
         $('#account').click(function() {
@@ -113,17 +113,55 @@ include_once('../includes/config.php');
             $('#cart-card').toggle();
         })
     })
+    function addtocart(id,e)
+        {
+            e.preventDefault();
+            $.ajax
+            ({
+                type: "POST",
+                url: "cart.php",
+                data: {id:id},
+                success:function(data)
+                {
+                    if(data!=1)
+                    window.location.href='login.php';
+                }
+            });
+            setTimeout(() => {
+                changestate(id);
+                cart();
+            }, 500);
+        }
+    function changestate(id)
+        {
+            $.ajax({
+                type: "POST",
+                url: "cart_prd_check.php",
+                data: {id:id},
+                success: function (response) {
+                    $('#btn_'+id).text(response);
+                }
+            });
+        }
 
-
-    function btn() {
+    function cart() {
+        var html = '';
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: "cart_details.php",
-            success: function(data1) {
-                if (data1 != '')
-                    $('#cart_card_det').html(data1);
-                else
-                    $('#cart_card_det').html("<h2 id='no-cart-items'>No Items in Cart</h2>");
+            dataType:"json",
+            success: function(data1){
+                const value = JSON.parse(JSON.stringify(data1));
+                    value.forEach(items => {
+                    html+= `<div class="cart-card"><img src="${items.prd_photo}"/>
+                        <article>
+                                <h2>${items.prd_name}</h2>
+                                <h1> &#x20B9 ${items.prd_price}</h1>
+                            </article>
+                                    <button class='btn' onclick="addtocart(${items.prd_id},event)">Remove</button>
+                            </div>`
+                })
+                        $('#cart_card_det').html(html);
             }
         })
         $.ajax({
