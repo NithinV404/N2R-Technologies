@@ -11,11 +11,14 @@ Instructions to run the website on your local machine
 
 - Navigate to the folder 
 
-- Run the Command 
+- Run the following command 
+
 
 ```
 docker-compose up --build
 ```
+- Now the project can be opened successfully in your prefered browser 
+
 - By default the port is 80
 
 ```
@@ -28,8 +31,6 @@ https://localhost:80
 ```
 https://localhost:8081
 ```
-
-Now the project opens successfully in your prefered browser 
 
 The project is under development ⚠️
 There may be some bugs 🪲
