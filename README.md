@@ -32,6 +32,12 @@ https://localhost:80
 https://localhost:8081
 ```
 
+By default some place holder values are inserted can be disabled by changing the value to 0 (disable) or 1(enable)
+
+```
+$insert_values = 1;
+```
+
 The project is under development ⚠️
 There may be some bugs 🪲
 
