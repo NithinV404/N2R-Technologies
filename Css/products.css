@@ -1,14 +1,14 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 html {
   scroll-behavior: smooth;
 }
 body {
   background-image: linear-gradient(315deg, #485461 0%, #28313b 80%);
-  background-size: 100% 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 header {
   display: flex;
@@ -53,7 +53,7 @@ button {
   flex-grow: 0;
 }
 
-.item-card > article > form > button {
+.item-card > article > button {
   border: none;
   font-weight: 500;
   border-radius: 5px;
@@ -68,7 +68,7 @@ button {
   margin: 1rem 0 0 0;
   cursor: pointer;
 }
-.item-card > article > form > button:hover {
+.item-card > article > button:hover {
   background-position: right center;
 }
 .item-card > article > p {

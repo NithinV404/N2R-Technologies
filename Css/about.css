@@ -20,7 +20,7 @@ body
     height: 400px;
     width: 700px;
     object-fit:cover;
-    background:url("Assets/shop now 2.jpg");
+    background:url("../Assets/shop now 2.jpg");
     box-shadow: 5px 5px 5px #28313b;
     position: relative;
     bottom: 352px;

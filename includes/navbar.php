@@ -1,15 +1,14 @@
 <?php
-include_once('./includes/config.php');
-session_start();
+include_once('../includes/config.php');
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <div class="navbar">
     <div class="logo">
-        <img src="Assets/logo.png" alt="n2r logo" width="250px" height="250px" />
+        <img src="../Assets/logo.png" alt="n2r logo" width="250px" height="250px" />
     </div>
     <nav>
         <ul>
-            <li class="home"><a href="home.php" id='home'>HOME</a></li>
+            <li class="home"><a href="index.php" id='home'>HOME</a></li>
             <li class="product"><a href="products.php" id='product'>PRODUCTS</a></li>
             <li class="faq"><a href="about.php" id='about'>ABOUT US</a></li>
             <li class="login"><a href="login.php" id='login'>LOGIN</a></li>
@@ -19,9 +18,9 @@ session_start();
         </ul>
     </nav>
     <div class="account" id="account">
-        <img src="Assets/shop now 2.jpg" />
+        <img src="../Assets/shop now 2.jpg" />
         <div class="account-content" id="account-content">
-            <div class="account-card" id="account-card"><img src="Assets/shop now 2.jpg" />
+            <div class="account-card" id="account-card"><img src="../Assets/shop now 2.jpg" />
                 <?php
                 if (isset($_SESSION['user']))
                 $user = $_SESSION['user'];
@@ -38,7 +37,7 @@ session_start();
                 } else {
                 ?>
                     <h2>Not logged in</h2>
-                    <a class='btn' id='log-in' href="../Login.php">Log in</a>
+                    <a class='btn' id='log-in' href="../src/login.php">Log in</a>
                 <?php
                 }
                 ?>
@@ -66,19 +65,19 @@ session_start();
         </div>
     </div>
 </div>
-<div class="itemcard-pop-holder" id='popup'>
-    <div class="itemcard-pop">
+<div class="cartcard-pop-holder" id='popup'>
+    <div class="cartcard-pop">
     </div>
 </div>
 <div id="cart-card-holder">
     <div id="cart-card">
         <h2 class="cart-header">Cart</h2>
 
-        <div class='item-card-holder' id="cart_card_det">
+        <div class='cart-card-holder' id="cart_card_det">
         </div>
         <div class='btm-div'>
             <h3 id='cart-total'></h3>
-            <button id="checkout-btn" class="btn" disabled>Checkout -></button>
+            <button id="checkout-btn" class="btn">Checkout -></button>
 
         </div>
     </div>
@@ -103,8 +102,8 @@ session_start();
                 break;
         }
 
-
-        btn();
+        cart();
+        
         $('#account-content').hide();
         $('#cart-card').hide();
         $('#account').click(function() {
@@ -114,17 +113,55 @@ session_start();
             $('#cart-card').toggle();
         })
     })
+    function addtocart(id,e)
+        {
+            e.preventDefault();
+            $.ajax
+            ({
+                type: "POST",
+                url: "cart.php",
+                data: {id:id},
+                success:function(data)
+                {
+                    if(data!=1)
+                    window.location.href='login.php';
+                }
+            });
+            setTimeout(() => {
+                changestate(id);
+                cart();
+            }, 500);
+        }
+    function changestate(id)
+        {
+            $.ajax({
+                type: "POST",
+                url: "cart_prd_check.php",
+                data: {id:id},
+                success: function (response) {
+                    $('#btn_'+id).text(response);
+                }
+            });
+        }
 
-
-    function btn() {
+    function cart() {
+        var html = '';
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: "cart_details.php",
-            success: function(data1) {
-                if (data1 != '')
-                    $('#cart_card_det').html(data1);
-                else
-                    $('#cart_card_det').html("<h2 id='no-cart-items'>No Items in Cart</h2>");
+            dataType:"json",
+            success: function(data1){
+                const value = JSON.parse(JSON.stringify(data1));
+                    value.forEach(items => {
+                    html+= `<div class="cart-card"><img src="${items.prd_photo}"/>
+                        <article>
+                                <h2>${items.prd_name}</h2>
+                                <h1> &#x20B9 ${items.prd_price}</h1>
+                            </article>
+                                    <button class='btn' onclick="addtocart(${items.prd_id},event)">Remove</button>
+                            </div>`
+                })
+                        $('#cart_card_det').html(html);
             }
         })
         $.ajax({
@@ -140,4 +177,9 @@ session_start();
         })
 
     }
+
+    $("#checkout-btn").click(function() {
+        if(($('.cart-card').length)!=0)
+        window.location.href = "checkout.php";
+    })
 </script>

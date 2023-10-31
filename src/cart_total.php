@@ -1,6 +1,6 @@
 <?php
             session_start();
-            include_once("./includes/config.php");
+            include_once("../includes/config.php");
             $user_id = 0;
             if(isset($_SESSION['user']))
             $user_id = $_SESSION['user'];

@@ -1,9 +1,10 @@
 <?php  
   session_start();
+  $user = 0;
   $user = $_SESSION['user'];
-  include_once('./includes/config.php');
+  include_once('../includes/config.php');
   $cart_result = mysqli_query($link,"SELECT * FROM cart WHERE user_id=$user");
-
+  $total = 0;
   while($hld = mysqli_fetch_assoc($cart_result))
   {
       $item = $hld['prd_id'];
@@ -12,10 +13,10 @@
       {
 
         echo "<tr>
-        <td>{$item}</td>
+        <td>#{$item}</td>
         <td>{$hld1['prd_name']}</td>
-        <td>{$hld1['prd_price']}</td>
-        <td>{$hld1['prd_price']}</td>
+        <td>{$hld1['prd_price']} &#x20B9</td>
+        <td>{$hld1['prd_price']} &#x20B9</td>
         </tr>
         ";
 
@@ -23,6 +24,6 @@
     }
       
   }
-  echo "<tr><td></td><td></td><td>Total:</td><td>{$total}</td>";
-  
+  echo "<tr><td></td><td></td><td>Total:</td><td>{$total} &#x20B9</td>";
+  mysqli_query($link,"TRUNCATE cart");
 ?>  
