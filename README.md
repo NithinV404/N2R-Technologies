@@ -6,10 +6,15 @@
 ## Images
 
 ![ExampleImage1](./screenshots/thorium_Q5GfWxxYBI.png)
+
 ![ExampleImage2](./screenshots/thorium_MWpGNnJRXy.png)
+
 ![ExampleImage3](./screenshots/thorium_4PkjVEz4A5.jpg)
+
 ![ExampleImage4](./screenshots/thorium_IUHO7GrDoV.jpg)
+
 ![ExampleImage5](./screenshots/thorium_Bo4vrKWx4y.png)
+
 
 Instructions to run the website on your local machine 
 
